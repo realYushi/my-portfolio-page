@@ -82,6 +82,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
+    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -111,15 +112,15 @@
   }
 
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-4xl md:text-5xl lg:text-6xl;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-3xl md:text-4xl lg:text-5xl;
   }
 
   h3 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-2xl md:text-3xl lg:text-4xl;
   }
 
   p {
@@ -130,28 +131,50 @@
 @layer components {
   .hero-heading {
     font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.1;
     color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
   }
 
   .feature-title {
     font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
     color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: hsl(var(--foreground));
+    margin-bottom: 1.5rem;
   }
 
   .ui-text {
     font-family: 'Inter', sans-serif;
     font-size: clamp(1rem, 2vw, 1.125rem);
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.7;
     color: hsl(var(--foreground));
+  }
+
+  .section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+    max-width: 48rem;
+    margin: 0 auto 3rem;
   }
 
   .nav-link {
@@ -181,5 +204,163 @@
     font-weight: 600;
   }
 
+  /* Section Layout Utilities */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-padding-small {
+    @apply py-12 sm:py-16;
+  }
+
+  .section-grid {
+    @apply grid gap-6 lg:gap-8;
+  }
+
+  .section-grid-2 {
+    @apply grid md:grid-cols-2 gap-6 lg:gap-8;
+  }
+
+  .section-grid-3 {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+
+  /* Enhanced Card Styles */
+  .card-enhanced {
+    @apply card-shadow hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out;
+    @apply hover:bg-gradient-to-br hover:from-card hover:to-card/95;
+    @apply border border-border/50 hover:border-primary/30;
+    @apply backdrop-blur-sm bg-card/95;
+  }
+
+  /* Mobile-first responsive improvements */
+  @media (max-width: 768px) {
+    .section-padding {
+      @apply py-12 sm:py-16;
+    }
+    
+    .section-title {
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
+      @apply mb-4;
+    }
+    
+    .section-description {
+      font-size: clamp(1rem, 3vw, 1.125rem);
+      @apply mb-8;
+    }
+    
+    .card-enhanced {
+      @apply hover:translate-y-0 hover:shadow-lg;
+    }
+
+    /* Disable hover effects on mobile for better performance */
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+    
+    .hover\:scale-110:hover {
+      transform: none;
+    }
+    
+    .hover\:-translate-y-1:hover {
+      transform: none;
+    }
+  }
+
+  /* Ensure smooth touch interactions on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover,
+    .hover\:-translate-y-1:hover {
+      transform: none;
+    }
+    
+    .hover\:shadow-lg:hover,
+    .hover\:shadow-md:hover {
+      box-shadow: inherit;
+    }
+  }
+
+  /* Smooth scroll improvements */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Focus improvements */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Subtle animations and transitions */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Improved text selection */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
 
 }

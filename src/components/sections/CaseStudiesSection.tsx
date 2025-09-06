@@ -3,126 +3,145 @@ import { Badge } from "@/components/ui/badge";
 
 export const CaseStudiesSection = () => {
   return (
-    <section id="case-studies" className="bg-muted/30 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="feature-title text-center mb-12 text-foreground">
-          Solutions in Action: Case Studies
-        </h2>
+    <section id="case-studies" className="bg-muted/20 section-padding">
+      <div className="section-container">
+        <div className="text-center mb-16">
+          <h2 className="section-title">Solutions in Action</h2>
+          <p className="section-description">
+            Real-world projects that showcase my ability to deliver high-quality solutions across different industries and technical challenges.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="section-grid-2">
           {/* Case Study 1 */}
-          <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
-            <CardHeader>
-              <Badge variant="secondary" className="w-fit">
+          <Card className="card-enhanced group">
+            <CardHeader className="pb-6">
+              <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 HALO Systems Internship
               </Badge>
-              <CardTitle className="feature-title">
+              <CardTitle className="feature-title text-xl leading-tight">
                 Real-Time Data Dashboard for AgriTech
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="ui-text text-muted-foreground mb-4">
-                <strong>Objective:</strong> To engineer a performance-critical,
-                real-time monitoring dashboard for an enterprise client.
-              </p>
-              <p className="ui-text text-muted-foreground">
-                <strong>Outcome:</strong> Successfully developed and delivered a
-                production-level HMI component using Vue.js and TypeScript. My
-                front-end data filtering strategy significantly improved
-                performance and usability.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="outline">Vue.js</Badge>
-                <Badge variant="outline">TypeScript</Badge>
-                <Badge variant="outline">Real-time Data</Badge>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Objective:</strong> To engineer a performance-critical,
+                  real-time monitoring dashboard for an enterprise client.
+                </p>
+              </div>
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Outcome:</strong> Successfully developed and delivered a
+                  production-level HMI component using Vue.js and TypeScript. My
+                  front-end data filtering strategy significantly improved
+                  performance and usability.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <Badge variant="outline" className="text-xs">Vue.js</Badge>
+                <Badge variant="outline" className="text-xs">TypeScript</Badge>
+                <Badge variant="outline" className="text-xs">Real-time Data</Badge>
               </div>
             </CardContent>
           </Card>
 
           {/* Case Study 2 */}
-          <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
-            <CardHeader>
-              <Badge variant="secondary" className="w-fit">
+          <Card className="card-enhanced group">
+            <CardHeader className="pb-6">
+              <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Personal Project
               </Badge>
-              <CardTitle className="feature-title">
+              <CardTitle className="feature-title text-xl leading-tight">
                 Personalized AI Workflow Agent (My GTD Buddy)
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="ui-text text-muted-foreground mb-4">
-                <strong>Objective:</strong> A self-directed project to explore
-                the practical application of AI agents in enhancing personal
-                productivity.
-              </p>
-              <p className="ui-text text-muted-foreground">
-                <strong>Outcome:</strong> Designed and built a multi-agent
-                system using Gemini to automate the 'Getting Things Done' (GTD)
-                methodology. This project showcases my initiative and skills in
-                AI agent orchestration and prompt engineering.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="outline">AI Agents</Badge>
-                <Badge variant="outline">Gemini</Badge>
-                <Badge variant="outline">Productivity</Badge>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Objective:</strong> A self-directed project to explore
+                  the practical application of AI agents in enhancing personal
+                  productivity.
+                </p>
+              </div>
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Outcome:</strong> Designed and built a multi-agent
+                  system using Gemini to automate the 'Getting Things Done' (GTD)
+                  methodology. This project showcases my initiative and skills in
+                  AI agent orchestration and prompt engineering.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <Badge variant="outline" className="text-xs">AI Agents</Badge>
+                <Badge variant="outline" className="text-xs">Gemini</Badge>
+                <Badge variant="outline" className="text-xs">Productivity</Badge>
               </div>
             </CardContent>
           </Card>
 
           {/* Case Study 3 */}
-          <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
-            <CardHeader>
-              <Badge variant="secondary" className="w-fit">
+          <Card className="card-enhanced group">
+            <CardHeader className="pb-6">
+              <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Hackathon Winner
               </Badge>
-              <CardTitle className="feature-title">
+              <CardTitle className="feature-title text-xl leading-tight">
                 Award-Winning FinTech Prototype
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="ui-text text-muted-foreground mb-4">
-                <strong>Objective:</strong> To design and build a high-impact
-                financial dashboard prototype within a 12-hour timeframe.
-              </p>
-              <p className="ui-text text-muted-foreground">
-                <strong>Outcome:</strong> Co-led a team to a first-place victory
-                by focusing on core user value and demonstrating rapid,
-                collaborative prototyping with Vue.js.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="outline">Vue.js</Badge>
-                <Badge variant="outline">Prototyping</Badge>
-                <Badge variant="outline">FinTech</Badge>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Objective:</strong> To design and build a high-impact
+                  financial dashboard prototype within a 12-hour timeframe.
+                </p>
+              </div>
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Outcome:</strong> Co-led a team to a first-place victory
+                  by focusing on core user value and demonstrating rapid,
+                  collaborative prototyping with Vue.js.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <Badge variant="outline" className="text-xs">Vue.js</Badge>
+                <Badge variant="outline" className="text-xs">Prototyping</Badge>
+                <Badge variant="outline" className="text-xs">FinTech</Badge>
               </div>
             </CardContent>
           </Card>
 
           {/* Case Study 4 */}
-          <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
-            <CardHeader>
-              <Badge variant="secondary" className="w-fit">
+          <Card className="card-enhanced group">
+            <CardHeader className="pb-6">
+              <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Full-Stack Project
               </Badge>
-              <CardTitle className="feature-title">
+              <CardTitle className="feature-title text-xl leading-tight">
                 Task Management Application
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="ui-text text-muted-foreground mb-4">
-                <strong>Objective:</strong> A comprehensive project to build a
-                production-ready, full-stack application from the ground up.
-              </p>
-              <p className="ui-text text-muted-foreground">
-                <strong>Outcome:</strong> Built a robust, mobile-first
-                application with React, .NET, and SQL, fully containerized with
-                Docker and developed using TDD methodologies to ensure code
-                quality and reliability.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="outline">React</Badge>
-                <Badge variant="outline">.NET</Badge>
-                <Badge variant="outline">Docker</Badge>
-                <Badge variant="outline">TDD</Badge>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Objective:</strong> A comprehensive project to build a
+                  production-ready, full-stack application from the ground up.
+                </p>
+              </div>
+              <div>
+                <p className="ui-text text-muted-foreground leading-relaxed">
+                  <strong className="text-foreground">Outcome:</strong> Built a robust, mobile-first
+                  application with React, .NET, and SQL, fully containerized with
+                  Docker and developed using TDD methodologies to ensure code
+                  quality and reliability.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <Badge variant="outline" className="text-xs">React</Badge>
+                <Badge variant="outline" className="text-xs">.NET</Badge>
+                <Badge variant="outline" className="text-xs">Docker</Badge>
+                <Badge variant="outline" className="text-xs">TDD</Badge>
               </div>
             </CardContent>
           </Card>
