@@ -5,7 +5,7 @@ import compression from "vite-plugin-compression";
 import path from "path";
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/my-portfolio-page/' : '/',
+  base: '/',
   server: {
     host: "::",
     port: 8080,
