@@ -19,7 +19,7 @@ const Index = () => {
       <header className="border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center justify-between">
-            <div className="text-xl font-bold font-['Bricolage_Grotesque'] text-foreground">Yushi Cui</div>
+            <div className="text-xl font-bold font-['Bricolage_Grotesque'] text-foreground">Hi, I am Yushi Cui</div>
             <div className="hidden md:flex space-x-6">
               <button onClick={() => scrollToSection('approach')} className="nav-link hover:text-primary">Approach</button>
               <button onClick={() => scrollToSection('capabilities')} className="nav-link hover:text-primary">Capabilities</button>
