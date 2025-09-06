@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { MadeWithDyad } from "@/components/made-with-dyad";
+import { AboutModal } from "@/components/AboutModal";
 import { Github, Linkedin, Download, Mail } from "lucide-react";
 
 const Index = () => {
@@ -341,8 +342,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-4">
-              Interested in my unique journey?{" "}
-              <a href="#" className="text-primary hover:underline">Read about my transition from chef to developer</a>
+              <AboutModal />
             </p>
             <p className="text-sm text-muted-foreground">© 2024 Yushi Cui. All rights reserved.</p>
           </div>
