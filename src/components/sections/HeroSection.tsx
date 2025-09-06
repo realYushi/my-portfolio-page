@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
-import { GithubIcon, LinkedinIcon, Download, MapPin } from "lucide-react";
+import { Github, Linkedin, Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Lazy load the heavy LightRays component
@@ -67,7 +67,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
                   }
                   aria-label="GitHub profile"
                 >
-                   <GithubIcon className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
+                   <Github className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
                 </Button>
                 <Button
                   variant="outline"
@@ -81,13 +81,13 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
                   }
                   aria-label="LinkedIn profile"
                 >
-                   <LinkedinIcon className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
+                   <Linkedin className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                  onClick={() => window.open("/resume.pdf", "_blank")}
+                  onClick={() => window.open(`${import.meta.env.BASE_URL}resume.pdf`, "_blank")}
                   aria-label="Download resume"
                 >
                   <Download className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
@@ -99,7 +99,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           <div className="relative bg-gradient-to-br from-background/30 via-background/50 to-background/70 backdrop-blur-md rounded-3xl h-72 sm:h-96 lg:h-[32rem] w-full overflow-hidden shadow-2xl border border-primary/30 group">
             <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
             <img
-              src="/me.png"
+              src={`${import.meta.env.BASE_URL}me.png`}
               alt="Yushi Cui - Full-Stack Developer"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
               loading="eager"
