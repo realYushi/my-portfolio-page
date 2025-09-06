@@ -3,7 +3,6 @@
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download } from "lucide-react";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { PixelBlast } from "react-bits";
 
 interface HeroSectionProps {
   email: string;
@@ -12,28 +11,10 @@ interface HeroSectionProps {
 export const HeroSection = ({ email }: HeroSectionProps) => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative min-h-[600px]">
-      {/* PixelBlast Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <PixelBlast
-          variant="circle"
-          pixelSize={6}
-          color="#B19EEF"
-          patternScale={3}
-          patternDensity={1.2}
-          pixelSizeJitter={0.5}
-          enableRipples={true}
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid={true}
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.6}
-          edgeFade={0.25}
-          transparent={true}
-          className="w-full h-full"
-        />
+      {/* Custom Background Pattern */}
+      <div className="absolute inset-0 -z-10 overflow-hidden opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(120,119,198,0.3)_0%,_transparent_50%)]"></div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-center relative z-10 h-full">
