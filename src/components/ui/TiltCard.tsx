@@ -37,11 +37,7 @@ export const TiltCard = ({ children, className = '', maxRotation = 20 }: TiltCar
       ref={cardRef}
       className={`transform-gpu transition-transform duration-300 ease-out ${className}`}
       style={{
-        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-        boxShadow: `
-          ${rotation.y * 2}px ${rotation.x * 2}px 20px rgba(0, 0, 0, 0.1),
-          ${-rotation.y * 1}px ${-rotation.x * 1}px 15px rgba(0, 0, 0, 0.05)
-        `
+        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
