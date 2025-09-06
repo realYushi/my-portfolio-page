@@ -9,7 +9,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header Section */}
       <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             {/* Logo */}
             <div className="text-xl font-bold">John Doe</div>
@@ -29,7 +29,7 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
@@ -75,7 +75,7 @@ const Index = () => {
 
       {/* Showcase Grid Section */}
       <section id="work" className="bg-muted/30 py-16">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold">Featured Work</h2>
             <Button variant="link" className="text-primary">
@@ -203,7 +203,7 @@ const Index = () => {
 
       {/* Social Proof Section */}
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground">Trusted by leading companies</p>
           </div>
@@ -219,7 +219,7 @@ const Index = () => {
 
       {/* Content Details Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Left Column - Technical Info */}
             <div className="space-y-6">
@@ -290,7 +290,7 @@ const Index = () => {
 
       {/* Analytics/About Section */}
       <section id="about" className="bg-muted/30 py-16">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left - Data Visualization */}
             <div className="space-y-6">
@@ -356,7 +356,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="bg-background border-t py-16">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-4">Let's create something amazing together</h2>
             <p className="text-lg text-muted-foreground">
