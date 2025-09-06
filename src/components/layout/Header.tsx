@@ -1,6 +1,7 @@
 "use client";
 
 import { EmailButtons } from "@/components/EmailButtons";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 interface HeaderProps {
   email: string;
@@ -22,8 +23,11 @@ export const Header = ({ email }: HeaderProps) => {
             <button onClick={() => scrollToSection('case-studies')} className="nav-link hover:text-primary">Case Studies</button>
             <button onClick={() => scrollToSection('contact')} className="nav-link hover:text-primary">Contact</button>
           </div>
-          <div className="md:hidden">
-            <EmailButtons email={email} className="flex-row" />
+          <div className="flex items-center space-x-4">
+            <ThemeSwitcher />
+            <div className="md:hidden">
+              <EmailButtons email={email} className="flex-row" />
+            </div>
           </div>
         </nav>
       </div>
