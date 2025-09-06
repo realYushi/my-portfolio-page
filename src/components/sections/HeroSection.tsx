@@ -220,16 +220,13 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
         </div>
 
         {/* Right Visual with 3D Tilt Effect - Increased height */}
-        <TiltCard className="bg-muted/80 backdrop-blur-sm rounded-lg h-96 flex items-center justify-center">
-          <div className="text-center text-muted-foreground">
-            <div className="w-24 h-24 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-2xl" aria-hidden="true">
-                👨‍💻
-              </span>
-            </div>
-            <p className="ui-text">Developer Profile</p>
-          </div>
-        </TiltCard>
+        <div className="bg-muted/80 backdrop-blur-sm rounded-lg h-[28rem] w-full flex items-center justify-center overflow-hidden shadow-2xl border-2 border-peach-500">
+          <img
+            src="/me.png"
+            alt="Developer Profile"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
