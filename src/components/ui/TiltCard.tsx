@@ -12,10 +12,7 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   
   const [springs, api] = useSpring(() => ({
-    x: 0,
-    y: 0,
-    rotateX: 0,
-    rotateY: 0,
+    transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0)',
     config: { mass: 1, tension: 280, friction: 20 }
   }));
 
@@ -30,21 +27,17 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
     
     const rotateX = ((y - centerY) / centerY) * 10;
     const rotateY = ((centerX - x) / centerX) * 10;
+    const translateX = (x - centerX) / 10;
+    const translateY = (y - centerY) / 10;
     
     api.start({
-      x: (x - centerX) / 10,
-      y: (y - centerY) / 10,
-      rotateX,
-      rotateY
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${translateX}px, ${translateY}px, 0)`
     });
   };
 
   const handleMouseLeave = () => {
     api.start({
-      x: 0,
-      y: 0,
-      rotateX: 0,
-      rotateY: 0
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0)'
     });
   };
 
@@ -52,11 +45,7 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
     <animated.div
       ref={ref}
       className={`transform-gpu transition-all duration-300 ${className}`}
-      style={{
-        transform: springs.rotateX.to((rx) => springs.rotateY.to((ry) => 
-          `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translate3d(${springs.x.to(x => x)}px, ${springs.y.to(y => y)}px, 0)`
-        ))
-      }}
+      style={springs}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
