@@ -1,7 +1,7 @@
 "use client";
 
 import { EmailButtons } from "@/components/EmailButtons";
-import { Github, Linkedin, Download } from "lucide-react";
+import { Github, Linkedin, Download, MapPin } from "lucide-react";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { useEffect, useRef } from "react";
 
@@ -140,6 +140,15 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           <h2 className="feature-title text-muted-foreground">
             Full-Stack Developer | Building Reliable & User-Focused Applications
           </h2>
+          
+          {/* Location Badge */}
+          <div className="flex items-center gap-2 bg-accent/20 px-4 py-2 rounded-full w-fit">
+            <MapPin className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-muted-foreground">
+              Auckland, NZ • Remote Available
+            </span>
+          </div>
+          
           <p className="ui-text text-muted-foreground">
             I engineer clean, high-performance applications with a relentless focus on the end-user. 
             I solve complex problems by crafting elegant, scalable, and well-documented code.
