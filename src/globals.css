@@ -357,6 +357,27 @@
     }
   }
 
+  @keyframes heroSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hero entrance animation classes */
+  .hero-element-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .hero-element-visible {
+    animation: heroSlideUp 600ms ease-out forwards;
+  }
+
   /* Improved text selection */
   ::selection {
     background-color: hsl(var(--primary) / 0.2);

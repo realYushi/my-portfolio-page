@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,44 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({ email }: HeroSectionProps) => {
+  const [showHeading, setShowHeading] = useState(false);
+  const [showSubheading, setShowSubheading] = useState(false);
+  const [showLocation, setShowLocation] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+  const [showCTA, setShowCTA] = useState(false);
+
+  useEffect(() => {
+    // Trigger heading animation immediately
+    setShowHeading(true);
+    
+    // Trigger subheading animation after 200ms
+    const subheadingTimer = setTimeout(() => {
+      setShowSubheading(true);
+    }, 200);
+
+    // Trigger location animation after 350ms
+    const locationTimer = setTimeout(() => {
+      setShowLocation(true);
+    }, 350);
+
+    // Trigger description animation after 450ms
+    const descriptionTimer = setTimeout(() => {
+      setShowDescription(true);
+    }, 450);
+
+    // Trigger CTA animation after 500ms (200ms + 300ms)
+    const ctaTimer = setTimeout(() => {
+      setShowCTA(true);
+    }, 500);
+
+    return () => {
+      clearTimeout(subheadingTimer);
+      clearTimeout(locationTimer);
+      clearTimeout(descriptionTimer);
+      clearTimeout(ctaTimer);
+    };
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
@@ -37,24 +75,36 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="hero-heading text-foreground drop-shadow-sm">Yushi Cui</h1>
-              <h2 className="feature-title text-xl sm:text-2xl text-foreground/90 drop-shadow-sm font-medium">
+              <h1 className={`hero-heading text-foreground drop-shadow-sm ${
+                showHeading ? 'hero-element-visible' : 'hero-element-hidden'
+              }`}>
+                Yushi Cui
+              </h1>
+              <h2 className={`feature-title text-xl sm:text-2xl text-foreground/90 drop-shadow-sm font-medium ${
+                showSubheading ? 'hero-element-visible' : 'hero-element-hidden'
+              }`}>
                 Full-Stack Developer | Building Reliable & User-Focused Applications
               </h2>
             </div>
 
-            <div className="flex items-center gap-3 bg-background/40 backdrop-blur-md px-5 py-3 rounded-full w-fit border border-primary/30 shadow-lg">
+            <div className={`flex items-center gap-3 bg-background/40 backdrop-blur-md px-5 py-3 rounded-full w-fit border border-primary/30 shadow-lg ${
+              showLocation ? 'hero-element-visible' : 'hero-element-hidden'
+            }`}>
               <MapPin className="w-5 h-5 text-primary drop-shadow-sm" />
               <span className="text-sm font-semibold text-foreground/90 drop-shadow-sm">
                 Auckland, NZ • Remote Available
               </span>
             </div>
 
-            <p className="ui-text text-lg text-foreground/90 drop-shadow-sm bg-background/30 backdrop-blur-md rounded-xl p-6 border border-primary/20 shadow-lg leading-relaxed">
+            <p className={`ui-text text-lg text-foreground/90 drop-shadow-sm bg-background/30 backdrop-blur-md rounded-xl p-6 border border-primary/20 shadow-lg leading-relaxed ${
+              showDescription ? 'hero-element-visible' : 'hero-element-hidden'
+            }`}>
               I engineer clean, high-performance applications with a relentless focus on the end-user. I solve complex problems by crafting elegant, scalable, and well-documented code.
             </p>
 
-            <div className="space-y-6">
+            <div className={`space-y-6 ${
+              showCTA ? 'hero-element-visible' : 'hero-element-hidden'
+            }`}>
               <EmailButtons email={email} />
 
               <div className="flex flex-wrap gap-4 pt-2">
