@@ -95,7 +95,7 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-110 group-hover:text-primary transition-transform duration-300 ease-out">
                   <span className="text-xl group-hover:text-primary transition-colors duration-300 ease-out" aria-hidden="true">🏗️</span>
                 </div>
-                <CardTitle className="feature-title">Clean & Scalable Architecture</CardTitle>
+                <CardTitle className="text-lg font-semibold">Clean & Scalable Architecture</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground">
@@ -110,7 +110,7 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-110 group-hover:text-primary transition-transform duration-300 ease-out">
                   <span className="text-xl group-hover:text-primary transition-colors duration-300 ease-out" aria-hidden="true">🎯</span>
                 </div>
-                <CardTitle className="feature-title">User-Centric Design</CardTitle>
+                <CardTitle className="text-lg font-semibold">User-Centric Design</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground">
@@ -125,7 +125,7 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center group-hover:scale-110 group-hover:text-primary transition-transform duration-300 ease-out">
                   <span className="text-xl group-hover:text-primary transition-colors duration-300 ease-out" aria-hidden="true">⚡</span>
                 </div>
-                <CardTitle className="feature-title">Performance & Reliability</CardTitle>
+                <CardTitle className="text-lg font-semibold">Performance & Reliability</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground">
@@ -146,8 +146,8 @@ const Index = () => {
             {/* Feature 1 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <CardTitle className="feature-title">Full-Stack Proficiency</CardTitle>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <CardTitle className="text-lg font-semibold">Full-Stack Proficiency</CardTitle>
+                <div className="flex flex-wrap gap-2 pt-3">
                   <Badge variant="secondary">React</Badge>
                   <Badge variant="secondary">Vue.js</Badge>
                   <Badge variant="secondary">.NET</Badge>
@@ -167,8 +167,8 @@ const Index = () => {
             {/* Feature 2 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <CardTitle className="feature-title">Modern DevOps & AI Integration</CardTitle>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <CardTitle className="text-lg font-semibold">Modern DevOps & AI Integration</CardTitle>
+                <div className="flex flex-wrap gap-2 pt-3">
                   <Badge variant="secondary">Docker</Badge>
                   <Badge variant="secondary">GitHub Actions</Badge>
                   <Badge variant="secondary">AI Agent Architecture</Badge>
@@ -186,8 +186,8 @@ const Index = () => {
             {/* Feature 3 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <CardTitle className="feature-title">Professional & Agile Mindset</CardTitle>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <CardTitle className="text-lg font-semibold">Professional & Agile Mindset</CardTitle>
+                <div className="flex flex-wrap gap-2 pt-3">
                   <Badge variant="secondary">Agile</Badge>
                   <Badge variant="secondary">Scrum</Badge>
                   <Badge variant="secondary">TDD</Badge>
@@ -215,8 +215,8 @@ const Index = () => {
             {/* Case Study 1 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">HALO Systems Internship</Badge>
-                <CardTitle className="feature-title">Real-Time Data Dashboard for AgriTech</CardTitle>
+                <Badge variant="secondary" className="w-fit mb-2">HALO Systems Internship</Badge>
+                <CardTitle className="text-lg font-semibold">Real-Time Data Dashboard for AgriTech</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground mb-4">
@@ -237,8 +237,8 @@ const Index = () => {
             {/* Case Study 2 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">Personal Project</Badge>
-                <CardTitle className="feature-title">Personalized AI Workflow Agent (My GTD Buddy)</CardTitle>
+                <Badge variant="secondary" className="w-fit mb-2">Personal Project</Badge>
+                <CardTitle className="text-lg font-semibold">Personalized AI Workflow Agent (My GTD Buddy)</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground mb-4">
@@ -259,8 +259,8 @@ const Index = () => {
             {/* Case Study 3 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">Hackathon Winner</Badge>
-                <CardTitle className="feature-title">Award-Winning FinTech Prototype</CardTitle>
+                <Badge variant="secondary" className="w-fit mb-2">Hackathon Winner</Badge>
+                <CardTitle className="text-lg font-semibold">Award-Winning FinTech Prototype</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground mb-4">
@@ -281,8 +281,8 @@ const Index = () => {
             {/* Case Study 4 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">Full-Stack Project</Badge>
-                <CardTitle className="feature-title">Task Management Application</CardTitle>
+                <Badge variant="secondary" className="w-fit mb-2">Full-Stack Project</Badge>
+                <CardTitle className="text-lg font-semibold">Task Management Application</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="ui-text text-muted-foreground mb-4">
