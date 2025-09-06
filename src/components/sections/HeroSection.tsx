@@ -17,7 +17,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // Set canvas size
@@ -26,7 +26,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       canvas.height = canvas.offsetHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     // Enhanced pixel particles with better visibility
     const particles: Array<{
@@ -42,26 +42,24 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
 
     // Theme-aware colors - will be updated when theme changes
     const getThemeColors = () => {
-      const isDark = document.documentElement.classList.contains('dark');
+      const isDark = document.documentElement.classList.contains("dark");
       if (isDark) {
-        // Catppuccin Mocha colors
+        // Catppuccin Mocha colors (Peach only)
         return [
-          '#cba6f7', // Mauve
-          '#94e2d5', // Teal  
-          '#fab387', // Peach
-          '#bac2de', // Subtext1
+          "#fab387", // Peach
+          "#cba6f7", // Mauve
+          "#bac2de", // Subtext1
         ];
       } else {
-        // Catppuccin Latte colors
+        // Catppuccin Latte colors (Peach only)
         return [
-          '#8839ef', // Mauve
-          '#179299', // Teal
-          '#fe640b', // Peach
-          '#5c5f77', // Subtext1
+          "#fe640b", // Peach
+          "#8839ef", // Mauve
+          "#5c5f77", // Subtext1
         ];
       }
     };
-    
+
     const colors = getThemeColors();
 
     // Create more visible particles
@@ -83,12 +81,16 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw theme-aware background gradient
-      const isDark = document.documentElement.classList.contains('dark');
-      const primaryColor = isDark ? '#cba6f7' : '#8839ef'; // Mauve for both themes
-      
+      const isDark = document.documentElement.classList.contains("dark");
+      const primaryColor = isDark ? "#cba6f7" : "#8839ef"; // Mauve for both themes
+
       const gradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.max(canvas.width, canvas.height) / 2
       );
       gradient.addColorStop(0, `${primaryColor}1a`); // 10% opacity
       gradient.addColorStop(1, `${primaryColor}00`); // 0% opacity
@@ -128,7 +130,8 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           vx: (Math.random() - 0.5) * 2,
           vy: (Math.random() - 0.5) * 2,
           size: Math.random() * 3 + 1,
-          color: currentColors[Math.floor(Math.random() * currentColors.length)],
+          color:
+            currentColors[Math.floor(Math.random() * currentColors.length)],
           alpha: 1,
           life: 1,
         });
@@ -140,7 +143,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
 
@@ -151,10 +154,10 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full"
-          style={{ pointerEvents: 'none' }}
+          style={{ pointerEvents: "none" }}
         />
       </div>
-      
+
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="space-y-6">
@@ -162,7 +165,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           <h2 className="feature-title text-muted-foreground">
             Full-Stack Developer | Building Reliable & User-Focused Applications
           </h2>
-          
+
           {/* Location Badge */}
           <div className="flex items-center gap-2 bg-accent/20 px-4 py-2 rounded-full w-fit">
             <MapPin className="w-4 h-4 text-primary" />
@@ -170,35 +173,43 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
               Auckland, NZ • Remote Available
             </span>
           </div>
-          
+
           <p className="ui-text text-muted-foreground">
-            I engineer clean, high-performance applications with a relentless focus on the end-user. 
-            I solve complex problems by crafting elegant, scalable, and well-documented code.
+            I engineer clean, high-performance applications with a relentless
+            focus on the end-user. I solve complex problems by crafting elegant,
+            scalable, and well-documented code.
           </p>
-          
+
           {/* Email Buttons */}
           <EmailButtons email={email} />
-          
+
           {/* Social Links */}
           <div className="flex space-x-4 pt-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="icon"
-              onClick={() => window.open("https://github.com/realYushi", "_blank")}
+              onClick={() =>
+                window.open("https://github.com/realYushi", "_blank")
+              }
               aria-label="GitHub profile"
             >
               <Github className="w-5 h-5" />
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="icon"
-              onClick={() => window.open("https://www.linkedin.com/in/yushi-c-6043aa285/", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/yushi-c-6043aa285/",
+                  "_blank"
+                )
+              }
               aria-label="LinkedIn profile"
             >
               <Linkedin className="w-5 h-5" />
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="icon"
               onClick={() => window.open("/resume.pdf", "_blank")}
               aria-label="Download resume"
@@ -207,12 +218,14 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
             </Button>
           </div>
         </div>
-        
+
         {/* Right Visual with 3D Tilt Effect - Increased height */}
         <TiltCard className="bg-muted/80 backdrop-blur-sm rounded-lg h-96 flex items-center justify-center">
           <div className="text-center text-muted-foreground">
             <div className="w-24 h-24 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-2xl" aria-hidden="true">👨‍💻</span>
+              <span className="text-2xl" aria-hidden="true">
+                👨‍💻
+              </span>
             </div>
             <p className="ui-text">Developer Profile</p>
           </div>
