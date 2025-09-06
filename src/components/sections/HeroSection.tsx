@@ -1,9 +1,8 @@
-"use client";
-
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LightRays from "../ui/lightRays";
+
 interface HeroSectionProps {
   email: string;
 }
@@ -31,32 +30,28 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       </div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div className="space-y-6">
-          <h1 className="hero-heading text-foreground drop-shadow-sm">Yushi Cui</h1>
-          <h2 className="feature-title text-foreground/90 drop-shadow-sm">
-            Full-Stack Developer | Building Reliable & User-Focused Applications
-          </h2>
+            <h1 className="hero-heading text-foreground drop-shadow-sm">Yushi Cui</h1>
+            <h2 className="feature-title text-foreground/90 drop-shadow-sm">
+              Full-Stack Developer | Building Reliable & User-Focused Applications
+            </h2>
 
-          {/* Location Badge */}
-          <div className="flex items-center gap-2 bg-background/30 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-primary/20 shadow-sm">
-            <MapPin className="w-4 h-4 text-primary drop-shadow-sm" />
-            <span className="text-sm font-medium text-foreground/90 drop-shadow-sm">
-              Auckland, NZ • Remote Available
-            </span>
-          </div>
+            <div className="flex items-center gap-2 bg-background/30 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-primary/20 shadow-sm">
+              <MapPin className="w-4 h-4 text-primary drop-shadow-sm" />
+              <span className="text-sm font-medium text-foreground/90 drop-shadow-sm">
+                Auckland, NZ • Remote Available
+              </span>
+            </div>
 
-          <p className="ui-text text-foreground/85 drop-shadow-sm bg-background/20 backdrop-blur-sm rounded-lg p-4 border border-primary/10">
-            I engineer clean, high-performance applications with a relentless
-            focus on the end-user. I solve complex problems by crafting elegant,
-            scalable, and well-documented code.
-          </p>
+            <p className="ui-text text-foreground/85 drop-shadow-sm bg-background/20 backdrop-blur-sm rounded-lg p-4 border border-primary/10">
+              I engineer clean, high-performance applications with a relentless
+              focus on the end-user. I solve complex problems by crafting elegant,
+              scalable, and well-documented code.
+            </p>
 
-          {/* Email Buttons */}
-          <EmailButtons email={email} />
+            <EmailButtons email={email} />
 
-          {/* Social Links */}
-          <div className="flex space-x-4 pt-4">
+            <div className="flex space-x-4 pt-4">
             <Button
               variant="outline"
               size="icon"
@@ -91,16 +86,15 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           </div>
         </div>
 
-        {/* Right Visual with 3D Tilt Effect - Increased height */}
-        <div className="relative bg-gradient-to-br from-background/20 via-background/40 to-background/60 backdrop-blur-sm rounded-2xl h-[28rem] w-full flex items-center justify-center overflow-hidden shadow-2xl border border-primary/20">
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
-          <img
-            src="/me.png"
-            alt="Developer Profile"
-            className="relative w-full h-full object-cover transition-all duration-700 hover:scale-105 mix-blend-normal opacity-90 hover:opacity-100"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 pointer-events-none" />
-        </div>
+          <div className="relative bg-gradient-to-br from-background/20 via-background/40 to-background/60 backdrop-blur-sm rounded-2xl h-[28rem] w-full overflow-hidden shadow-2xl border border-primary/20">
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+            <img
+              src="/me.png"
+              alt="Developer Profile"
+              className="w-full h-full object-cover transition-all duration-700 hover:scale-105 opacity-90 hover:opacity-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 pointer-events-none" />
+          </div>
         </div>
       </div>
     </section>
