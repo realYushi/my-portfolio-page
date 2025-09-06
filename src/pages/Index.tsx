@@ -6,7 +6,7 @@ import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { ContactFooter } from "@/components/sections/ContactFooter";
 
 const Index = () => {
-  const email = "yushi@example.com";
+  const email = "realyushi@gmail.com";
 
   return (
     <div className="min-h-screen bg-background">

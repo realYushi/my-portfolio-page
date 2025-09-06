@@ -150,10 +150,10 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           
           {/* Social Links */}
           <div className="flex space-x-4 pt-4">
-            <a href="https://github.com" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="GitHub profile">
+            <a href="https://github.com/realYushi" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="GitHub profile">
               <Github className="w-6 h-6" />
             </a>
-            <a href="https://linkedin.com" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="LinkedIn profile">
+            <a href="https://www.linkedin.com/in/yushi-c-6043aa285/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="LinkedIn profile">
               <Linkedin className="w-6 h-6" />
             </a>
             <a href="/resume.pdf" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="Download resume">

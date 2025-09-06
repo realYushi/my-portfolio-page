@@ -28,7 +28,9 @@ export const ContactFooter = ({ email }: ContactFooterProps) => {
         {/* Social Links - Improved layout */}
         <div className="flex justify-center gap-8 mb-16">
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/yushi-c-6043aa285/" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors p-4 group"
             aria-label="LinkedIn profile"
           >
@@ -38,7 +40,9 @@ export const ContactFooter = ({ email }: ContactFooterProps) => {
             <span className="ui-text font-medium">LinkedIn</span>
           </a>
           <a 
-            href="https://github.com" 
+            href="https://github.com/realYushi" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors p-4 group"
             aria-label="GitHub profile"
           >
