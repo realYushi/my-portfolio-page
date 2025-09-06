@@ -7,82 +7,85 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 270 20% 10%;
+    /* Catppuccin Latte (Light Mode) */
+    --background: 220 23% 95%; /* Base */
+    --foreground: 234 16% 35%; /* Text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 270 20% 10%;
+    --card: 220 23% 97%; /* Mantle */
+    --card-foreground: 234 16% 35%; /* Text */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 270 20% 10%;
+    --popover: 220 23% 95%; /* Base */
+    --popover-foreground: 234 16% 35%; /* Text */
 
-    --primary: 270 70% 60%; /* Purple primary color */
-    --primary-foreground: 0 0% 100%;
+    --primary: 267 84% 81%; /* Mauve */
+    --primary-foreground: 220 23% 95%; /* Base */
 
-    --secondary: 270 20% 96%;
-    --secondary-foreground: 270 20% 10%;
+    --secondary: 183 70% 92%; /* Teal */
+    --secondary-foreground: 234 16% 35%; /* Text */
 
-    --muted: 270 10% 96%;
-    --muted-foreground: 270 10% 46%;
+    --muted: 220 23% 90%; /* Surface0 */
+    --muted-foreground: 234 16% 45%; /* Subtext1 */
 
-    --accent: 270 20% 96%;
-    --accent-foreground: 270 20% 10%;
+    --accent: 350 65% 92%; /* Maroon */
+    --accent-foreground: 234 16% 35%; /* Text */
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 347 87% 44%; /* Red */
+    --destructive-foreground: 220 23% 95%; /* Base */
 
-    --border: 270 20% 92%;
-    --input: 270 20% 92%;
-    --ring: 270 70% 60%;
+    --border: 220 23% 85%; /* Surface1 */
+    --input: 220 23% 85%; /* Surface1 */
+    --ring: 267 84% 81%; /* Mauve */
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 270 5% 26%;
-    --sidebar-primary: 270 70% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 4% 96%;
-    --sidebar-accent-foreground: 270 20% 10%;
-    --sidebar-border: 270 13% 91%;
-    --sidebar-ring: 270 70% 60%;
+    --sidebar-background: 220 23% 92%; /* Surface0 */
+    --sidebar-foreground: 234 16% 35%; /* Text */
+    --sidebar-primary: 267 84% 81%; /* Mauve */
+    --sidebar-primary-foreground: 220 23% 95%; /* Base */
+    --sidebar-accent: 220 23% 90%; /* Surface1 */
+    --sidebar-accent-foreground: 234 16% 35%; /* Text */
+    --sidebar-border: 220 23% 85%; /* Surface2 */
+    --sidebar-ring: 267 84% 81%; /* Mauve */
   }
 
   .dark {
-    --background: 270 20% 8%;
-    --foreground: 0 0% 98%;
+    /* Catppuccin Mocha (Dark Mode) */
+    --background: 240 21% 15%; /* Base */
+    --foreground: 226 64% 88%; /* Text */
 
-    --card: 270 20% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 21% 12%; /* Mantle */
+    --card-foreground: 226 64% 88%; /* Text */
 
-    --popover: 270 20% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 21% 15%; /* Base */
+    --popover-foreground: 226 64% 88%; /* Text */
 
-    --primary: 270 70% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 267 84% 81%; /* Mauve */
+    --primary-foreground: 240 21% 15%; /* Base */
 
-    --secondary: 270 20% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 183 43% 24%; /* Teal */
+    --secondary-foreground: 226 64% 88%; /* Text */
 
-    --muted: 270 20% 20%;
-    --muted-foreground: 270 10% 70%;
+    --muted: 240 21% 20%; /* Surface0 */
+    --muted-foreground: 227 35% 80%; /* Subtext1 */
 
-    --accent: 270 20% 20%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 350 65% 40%; /* Maroon */
+    --accent-foreground: 226 64% 88%; /* Text */
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 347 87% 44%; /* Red */
+    --destructive-foreground: 226 64% 88%; /* Text */
 
-    --border: 270 20% 25%;
-    --input: 270 20% 25%;
-    --ring: 270 70% 60%;
-    --sidebar-background: 270 20% 10%;
-    --sidebar-foreground: 270 4% 96%;
-    --sidebar-primary: 270 70% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 20% 15%;
-    --sidebar-accent-foreground: 270 4% 96%;
-    --sidebar-border: 270 20% 15%;
-    --sidebar-ring: 270 70% 60%;
+    --border: 240 21% 25%; /* Surface1 */
+    --input: 240 21% 25%; /* Surface1 */
+    --ring: 267 84% 81%; /* Mauve */
+    
+    --sidebar-background: 240 21% 12%; /* Mantle */
+    --sidebar-foreground: 226 64% 88%; /* Text */
+    --sidebar-primary: 267 84% 81%; /* Mauve */
+    --sidebar-primary-foreground: 240 21% 15%; /* Base */
+    --sidebar-accent: 240 21% 20%; /* Surface0 */
+    --sidebar-accent-foreground: 226 64% 88%; /* Text */
+    --sidebar-border: 240 21% 25%; /* Surface1 */
+    --sidebar-ring: 267 84% 81%; /* Mauve */
   }
 }
 
@@ -180,7 +183,7 @@
 
   /* Card shadows */
   .card-shadow {
-    box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.1), 0 2px 4px -1px rgba(139, 92, 246, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
   /* Focus styles for accessibility */
@@ -217,8 +220,13 @@
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --border: 270 20% 20%;
-    --muted-foreground: 270 20% 10%;
+    --border: 220 23% 20%;
+    --muted-foreground: 234 16% 10%;
+  }
+  
+  .dark {
+    --border: 240 21% 30%;
+    --muted-foreground: 227 35% 90%;
   }
 }
 
