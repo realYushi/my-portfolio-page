@@ -25,7 +25,7 @@ export const EmailButtons = ({ email, className = "" }: EmailButtonsProps) => {
       {/* Primary Button - Hire Me */}
       <Button 
         size="lg" 
-        className="bg-black hover:bg-gray-800 text-white"
+        className="bg-[#3B82F6] hover:bg-blue-600 text-white"
         onClick={() => window.location.href = `mailto:${email}`}
       >
         <Plus className="w-4 h-4 mr-2" />
@@ -37,7 +37,7 @@ export const EmailButtons = ({ email, className = "" }: EmailButtonsProps) => {
         variant="outline" 
         size="lg"
         onClick={handleCopyEmail}
-        className="border-gray-300 hover:bg-gray-50"
+        className="border-gray-300 hover:bg-gray-50 text-[#3B82F6] hover:text-[#3B82F6]"
       >
         {isCopied ? (
           <Check className="w-4 h-4 mr-2 text-green-600" />
