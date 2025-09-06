@@ -3,6 +3,7 @@
 import { EmailButtons } from "@/components/EmailButtons";
 import { Linkedin, Github } from "lucide-react";
 import { AboutModal } from "@/components/AboutModal";
+import { Button } from "@/components/ui/button";
 
 interface ContactFooterProps {
   email: string;
@@ -25,32 +26,32 @@ export const ContactFooter = ({ email }: ContactFooterProps) => {
           </div>
         </div>
 
-        {/* Social Links - Improved layout */}
-        <div className="flex justify-center gap-8 mb-16">
-          <a 
-            href="https://www.linkedin.com/in/yushi-c-6043aa285/" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors p-4 group"
-            aria-label="LinkedIn profile"
-          >
-            <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
+        {/* Social Links - Consistent with design system */}
+        <div className="flex justify-center gap-6 mb-16">
+          <div className="flex flex-col items-center">
+            <Button 
+              variant="outline" 
+              size="icon"
+              className="w-12 h-12 mb-3"
+              onClick={() => window.open("https://www.linkedin.com/in/yushi-c-6043aa285/", "_blank")}
+              aria-label="LinkedIn profile"
+            >
               <Linkedin className="w-6 h-6" />
-            </div>
-            <span className="ui-text font-medium">LinkedIn</span>
-          </a>
-          <a 
-            href="https://github.com/realYushi" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors p-4 group"
-            aria-label="GitHub profile"
-          >
-            <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
+            </Button>
+            <span className="ui-text font-medium text-muted-foreground">LinkedIn</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Button 
+              variant="outline" 
+              size="icon"
+              className="w-12 h-12 mb-3"
+              onClick={() => window.open("https://github.com/realYushi", "_blank")}
+              aria-label="GitHub profile"
+            >
               <Github className="w-6 h-6" />
-            </div>
-            <span className="ui-text font-medium">GitHub</span>
-          </a>
+            </Button>
+            <span className="ui-text font-medium text-muted-foreground">GitHub</span>
+          </div>
         </div>
 
         {/* Footer - Cleaner separation */}

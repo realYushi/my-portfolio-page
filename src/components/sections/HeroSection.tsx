@@ -3,6 +3,7 @@
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download, MapPin } from "lucide-react";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
 
 interface HeroSectionProps {
@@ -39,12 +40,29 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       life: number;
     }> = [];
 
-    const colors = [
-      '#6750a4',  // Primary purple
-      '#2090ee',  // Secondary blue
-      '#e8def8',  // Light purple
-      '#ffffff',  // White for highlights
-    ];
+    // Theme-aware colors - will be updated when theme changes
+    const getThemeColors = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        // Catppuccin Mocha colors
+        return [
+          '#cba6f7', // Mauve
+          '#94e2d5', // Teal  
+          '#fab387', // Peach
+          '#bac2de', // Subtext1
+        ];
+      } else {
+        // Catppuccin Latte colors
+        return [
+          '#8839ef', // Mauve
+          '#179299', // Teal
+          '#fe640b', // Peach
+          '#5c5f77', // Subtext1
+        ];
+      }
+    };
+    
+    const colors = getThemeColors();
 
     // Create more visible particles
     for (let i = 0; i < 80; i++) {
@@ -64,17 +82,20 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw background gradient
+      // Draw theme-aware background gradient
+      const isDark = document.documentElement.classList.contains('dark');
+      const primaryColor = isDark ? '#cba6f7' : '#8839ef'; // Mauve for both themes
+      
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
         canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2
       );
-      gradient.addColorStop(0, 'rgba(103, 80, 164, 0.1)');
-      gradient.addColorStop(1, 'rgba(103, 80, 164, 0)');
+      gradient.addColorStop(0, `${primaryColor}1a`); // 10% opacity
+      gradient.addColorStop(1, `${primaryColor}00`); // 0% opacity
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle, index) => {
+      particles.forEach((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
         particle.life -= 0.005;
@@ -98,15 +119,16 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
         ctx.globalAlpha = 1;
       });
 
-      // Add occasional new particles
+      // Add occasional new particles with current theme colors
       if (Math.random() < 0.1 && particles.length < 100) {
+        const currentColors = getThemeColors();
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * 2,
           vy: (Math.random() - 0.5) * 2,
           size: Math.random() * 3 + 1,
-          color: colors[Math.floor(Math.random() * colors.length)],
+          color: currentColors[Math.floor(Math.random() * currentColors.length)],
           alpha: 1,
           life: 1,
         });
@@ -159,15 +181,30 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           
           {/* Social Links */}
           <div className="flex space-x-4 pt-4">
-            <a href="https://github.com/realYushi" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="GitHub profile">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="https://www.linkedin.com/in/yushi-c-6043aa285/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="LinkedIn profile">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="/resume.pdf" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="Download resume">
-              <Download className="w-6 h-6" />
-            </a>
+            <Button 
+              variant="outline" 
+              size="icon"
+              onClick={() => window.open("https://github.com/realYushi", "_blank")}
+              aria-label="GitHub profile"
+            >
+              <Github className="w-5 h-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon"
+              onClick={() => window.open("https://www.linkedin.com/in/yushi-c-6043aa285/", "_blank")}
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin className="w-5 h-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon"
+              onClick={() => window.open("/resume.pdf", "_blank")}
+              aria-label="Download resume"
+            >
+              <Download className="w-5 h-5" />
+            </Button>
           </div>
         </div>
         
