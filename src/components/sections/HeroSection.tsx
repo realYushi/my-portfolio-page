@@ -92,13 +92,15 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
         </div>
 
         {/* Right Visual with 3D Tilt Effect - Increased height */}
-        <div className="bg-muted/80 backdrop-blur-sm rounded-lg h-[28rem] w-full flex items-center justify-center overflow-hidden shadow-2xl border-2 border-peach-500">
+        <div className="relative bg-gradient-to-br from-background/20 via-background/40 to-background/60 backdrop-blur-sm rounded-2xl h-[28rem] w-full flex items-center justify-center overflow-hidden shadow-2xl border border-primary/20">
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
           <img
             src="/me.png"
             alt="Developer Profile"
-            className="w-full h-full object-cover"
+            className="relative w-full h-full object-cover transition-all duration-700 hover:scale-105 mix-blend-normal opacity-90 hover:opacity-100"
           />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 pointer-events-none" />
+        </div>
         </div>
       </div>
     </section>
