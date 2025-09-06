@@ -12,15 +12,16 @@ export const AboutModal = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="text-primary hover:underline text-sm"
+        className="text-primary hover:underline text-sm p-2"
+        aria-label="Read about my transition from chef to developer"
       >
         Read about my transition from chef to developer
       </button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">From Kitchen to Keyboard</DialogTitle>
+            <DialogTitle className="text-2xl font-bold text-foreground">From Kitchen to Keyboard</DialogTitle>
             <DialogDescription className="text-lg text-muted-foreground mt-4">
               Before I wrote my first line of code, I spent six years as a professional chef. 
               In the high-pressure environment of the kitchen, I mastered the arts of precision, 
@@ -32,7 +33,7 @@ export const AboutModal = () => {
           </DialogHeader>
           
           <div className="flex justify-end pt-4">
-            <Button onClick={() => setIsOpen(false)}>
+            <Button onClick={() => setIsOpen(false)} aria-label="Close dialog">
               <X className="w-4 h-4 mr-2" />
               Close
             </Button>

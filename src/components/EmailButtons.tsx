@@ -21,14 +21,15 @@ export const EmailButtons = ({ email, className = "" }: EmailButtonsProps) => {
   };
 
   return (
-    <div className={`flex space-x-4 ${className}`}>
+    <div className={`flex flex-col sm:flex-row gap-3 ${className}`}>
       {/* Primary Button - Hire Me */}
       <Button 
         size="lg" 
-        className="bg-[#3B82F6] hover:bg-blue-600 text-white"
+        className="bg-primary hover:bg-primary/90 text-primary-foreground"
         onClick={() => window.location.href = `mailto:${email}`}
+        aria-label="Hire me via email"
       >
-        <Plus className="w-4 h-4 mr-2" />
+        <Plus className="w-5 h-5 mr-2" />
         Hire Me
       </Button>
 
@@ -37,12 +38,13 @@ export const EmailButtons = ({ email, className = "" }: EmailButtonsProps) => {
         variant="outline" 
         size="lg"
         onClick={handleCopyEmail}
-        className="border-gray-300 hover:bg-gray-50 text-[#3B82F6] hover:text-[#3B82F6]"
+        className="border-border hover:bg-accent text-foreground"
+        aria-label={isCopied ? "Email copied" : "Copy email address"}
       >
         {isCopied ? (
-          <Check className="w-4 h-4 mr-2 text-green-600" />
+          <Check className="w-5 h-5 mr-2 text-green-600" />
         ) : (
-          <Copy className="w-4 h-4 mr-2" />
+          <Copy className="w-5 h-5 mr-2" />
         )}
         {isCopied ? "Copied!" : "Copy Email"}
       </Button>

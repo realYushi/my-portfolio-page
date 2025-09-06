@@ -16,31 +16,33 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header Section */}
-      <header className="border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <header className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center justify-between">
-            <div className="text-xl font-bold font-['Bricolage_Grotesque']">Yushi Cui</div>
-            <div className="hidden md:flex space-x-8">
+            <div className="text-xl font-bold font-['Bricolage_Grotesque'] text-foreground">Yushi Cui</div>
+            <div className="hidden md:flex space-x-6">
               <button onClick={() => scrollToSection('approach')} className="nav-link hover:text-primary">Approach</button>
               <button onClick={() => scrollToSection('capabilities')} className="nav-link hover:text-primary">Capabilities</button>
               <button onClick={() => scrollToSection('case-studies')} className="nav-link hover:text-primary">Case Studies</button>
               <button onClick={() => scrollToSection('contact')} className="nav-link hover:text-primary">Contact</button>
             </div>
-            <EmailButtons email={email} />
+            <div className="md:hidden">
+              <EmailButtons email={email} className="flex-row" />
+            </div>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
-            <h1 className="hero-heading">Yushi Cui</h1>
+            <h1 className="hero-heading text-foreground">Yushi Cui</h1>
             <h2 className="feature-title text-muted-foreground">
               Full-Stack Developer | Building Reliable & User-Focused Applications
             </h2>
-            <p className="ui-text text-muted-foreground md:text-xl">
+            <p className="ui-text text-muted-foreground">
               I engineer clean, high-performance applications with a relentless focus on the end-user. 
               I solve complex problems by crafting elegant, scalable, and well-documented code.
             </p>
@@ -50,23 +52,23 @@ const Index = () => {
             
             {/* Social Links */}
             <div className="flex space-x-4 pt-4">
-              <a href="https://github.com" className="p-2 rounded-full border hover:bg-muted transition-colors">
-                <Github className="w-5 h-5" />
+              <a href="https://github.com" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="GitHub profile">
+                <Github className="w-6 h-6" />
               </a>
-              <a href="https://linkedin.com" className="p-2 rounded-full border hover:bg-muted transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <a href="https://linkedin.com" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="LinkedIn profile">
+                <Linkedin className="w-6 h-6" />
               </a>
-              <a href="/resume.pdf" className="p-2 rounded-full border hover:bg-muted transition-colors">
-                <Download className="w-5 h-5" />
+              <a href="/resume.pdf" className="p-3 rounded-full border border-border hover:bg-accent transition-colors" aria-label="Download resume">
+                <Download className="w-6 h-6" />
               </a>
             </div>
           </div>
           
           {/* Right Visual */}
-          <div className="bg-muted rounded-lg h-80 flex items-center justify-center">
+          <div className="bg-muted rounded-lg h-80 flex items-center justify-center card-shadow">
             <div className="text-center text-muted-foreground">
               <div className="w-24 h-24 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-2xl">👨‍💻</span>
+                <span className="text-2xl" aria-hidden="true">👨‍💻</span>
               </div>
               <p className="ui-text">Developer Profile</p>
             </div>
@@ -76,9 +78,9 @@ const Index = () => {
 
       {/* Approach Section */}
       <section id="approach" className="bg-muted/30 py-16">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="feature-title mb-6">A Product-Focused Approach</h2>
+            <h2 className="feature-title mb-6 text-foreground">A Product-Focused Approach</h2>
             <p className="ui-text text-muted-foreground max-w-3xl mx-auto">
               Great products are built on more than just code—they're built on a deep understanding of 
               user needs and business goals. My development process is grounded in this product-first 
@@ -86,12 +88,12 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Principle 1 */}
-            <Card className="text-center">
+            <Card className="text-center card-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-xl">🏗️</span>
+                  <span className="text-xl" aria-hidden="true">🏗️</span>
                 </div>
                 <CardTitle className="feature-title">Clean & Scalable Architecture</CardTitle>
               </CardHeader>
@@ -103,10 +105,10 @@ const Index = () => {
             </Card>
 
             {/* Principle 2 */}
-            <Card className="text-center">
+            <Card className="text-center card-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-xl">🎯</span>
+                  <span className="text-xl" aria-hidden="true">🎯</span>
                 </div>
                 <CardTitle className="feature-title">User-Centric Design</CardTitle>
               </CardHeader>
@@ -118,10 +120,10 @@ const Index = () => {
             </Card>
 
             {/* Principle 3 */}
-            <Card className="text-center">
+            <Card className="text-center card-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-xl">⚡</span>
+                  <span className="text-xl" aria-hidden="true">⚡</span>
                 </div>
                 <CardTitle className="feature-title">Performance & Reliability</CardTitle>
               </CardHeader>
@@ -137,12 +139,12 @@ const Index = () => {
 
       {/* Capabilities Section */}
       <section id="capabilities" className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="feature-title text-center mb-12">Core Capabilities</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="feature-title text-center mb-12 text-foreground">Core Capabilities</h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Feature 1 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <CardTitle className="feature-title">Full-Stack Proficiency</CardTitle>
                 <div className="flex flex-wrap gap-2 pt-2">
@@ -163,7 +165,7 @@ const Index = () => {
             </Card>
 
             {/* Feature 2 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <CardTitle className="feature-title">Modern DevOps & AI Integration</CardTitle>
                 <div className="flex flex-wrap gap-2 pt-2">
@@ -182,7 +184,7 @@ const Index = () => {
             </Card>
 
             {/* Feature 3 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <CardTitle className="feature-title">Professional & Agile Mindset</CardTitle>
                 <div className="flex flex-wrap gap-2 pt-2">
@@ -206,12 +208,12 @@ const Index = () => {
 
       {/* Case Studies Section */}
       <section id="case-studies" className="bg-muted/30 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="feature-title text-center mb-12">Solutions in Action: Case Studies</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="feature-title text-center mb-12 text-foreground">Solutions in Action: Case Studies</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {/* Case Study 1 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <Badge variant="secondary" className="w-fit">HALO Systems Internship</Badge>
                 <CardTitle className="feature-title">Real-Time Data Dashboard for AgriTech</CardTitle>
@@ -233,7 +235,7 @@ const Index = () => {
             </Card>
 
             {/* Case Study 2 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <Badge variant="secondary" className="w-fit">Personal Project</Badge>
                 <CardTitle className="feature-title">Personalized AI Workflow Agent (My GTD Buddy)</CardTitle>
@@ -255,7 +257,7 @@ const Index = () => {
             </Card>
 
             {/* Case Study 3 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <Badge variant="secondary" className="w-fit">Hackathon Winner</Badge>
                 <CardTitle className="feature-title">Award-Winning FinTech Prototype</CardTitle>
@@ -277,7 +279,7 @@ const Index = () => {
             </Card>
 
             {/* Case Study 4 */}
-            <Card>
+            <Card className="card-shadow">
               <CardHeader>
                 <Badge variant="secondary" className="w-fit">Full-Stack Project</Badge>
                 <CardTitle className="feature-title">Task Management Application</CardTitle>
@@ -304,9 +306,9 @@ const Index = () => {
 
       {/* Final CTA Section */}
       <section id="contact" className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="feature-title mb-6">Let's work together</h2>
+            <h2 className="feature-title mb-6 text-foreground">Let's work together</h2>
             <p className="ui-text text-muted-foreground max-w-2xl mx-auto">
               Ready to build something great? Let's get in touch.
             </p>
@@ -318,12 +320,12 @@ const Index = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center space-x-6 mt-12">
-            <a href="https://linkedin.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary">
+          <div className="flex justify-center space-x-6 mt-12 flex-wrap">
+            <a href="https://linkedin.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary p-3" aria-label="LinkedIn profile">
               <Linkedin className="w-5 h-5" />
               <span className="ui-text">LinkedIn</span>
             </a>
-            <a href="https://github.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary">
+            <a href="https://github.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary p-3" aria-label="GitHub profile">
               <Github className="w-5 h-5" />
               <span className="ui-text">GitHub</span>
             </a>
@@ -332,8 +334,8 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t py-12">
-        <div className="max-w-7xl mx-auto px-4">
+      <footer className="bg-background border-t border-border py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="ui-text text-muted-foreground mb-4">
               <AboutModal />
