@@ -1,16 +1,17 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { AboutModal } from "@/components/AboutModal";
-import { Github, Linkedin, Download, Mail } from "lucide-react";
+import { EmailButtons } from "@/components/EmailButtons";
+import { Github, Linkedin, Download } from "lucide-react";
 
 const Index = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const email = "yushi@example.com";
 
   return (
     <div className="min-h-screen bg-background">
@@ -25,7 +26,7 @@ const Index = () => {
               <button onClick={() => scrollToSection('case-studies')} className="text-sm font-medium hover:text-primary">Case Studies</button>
               <button onClick={() => scrollToSection('contact')} className="text-sm font-medium hover:text-primary">Contact</button>
             </div>
-            <Button onClick={() => scrollToSection('contact')}>Get in Touch</Button>
+            <EmailButtons email={email} />
           </nav>
         </div>
       </header>
@@ -43,10 +44,9 @@ const Index = () => {
               I engineer clean, high-performance applications with a relentless focus on the end-user. 
               I solve complex problems by crafting elegant, scalable, and well-documented code.
             </p>
-            <div className="flex space-x-4">
-              <Button size="lg" onClick={() => scrollToSection('case-studies')}>View My Work</Button>
-              <Button variant="outline" size="lg" onClick={() => scrollToSection('contact')}>Get in Touch</Button>
-            </div>
+            
+            {/* Email Buttons */}
+            <EmailButtons email={email} />
             
             {/* Social Links */}
             <div className="flex space-x-4 pt-4">
@@ -306,19 +306,19 @@ const Index = () => {
       <section id="contact" className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">Let's Build Something Great Together</h2>
+            <h2 className="text-3xl font-bold mb-6">Let's work together</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I am actively seeking software developer roles where I can contribute to a talented team 
-              and help build exceptional products. If my skills and product-focused mindset align with 
-              what you're looking for, I would be thrilled to connect.
+              Ready to build something great? Let's get in touch.
             </p>
           </div>
 
-          <div className="flex justify-center space-x-6 mb-12">
-            <a href="mailto:yushi@example.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary">
-              <Mail className="w-5 h-5" />
-              <span>yushi@example.com</span>
-            </a>
+          {/* Email Buttons */}
+          <div className="flex justify-center">
+            <EmailButtons email={email} />
+          </div>
+
+          {/* Social Links */}
+          <div className="flex justify-center space-x-6 mt-12">
             <a href="https://linkedin.com" className="flex items-center space-x-2 text-muted-foreground hover:text-primary">
               <Linkedin className="w-5 h-5" />
               <span>LinkedIn</span>
@@ -327,12 +327,6 @@ const Index = () => {
               <Github className="w-5 h-5" />
               <span>GitHub</span>
             </a>
-          </div>
-
-          <div className="text-center">
-            <Button size="lg" onClick={() => window.location.href = 'mailto:yushi@example.com'}>
-              Send an Email
-            </Button>
           </div>
         </div>
       </section>
