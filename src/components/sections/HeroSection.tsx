@@ -2,179 +2,51 @@
 
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download, MapPin } from "lucide-react";
-import { TiltCard } from "@/components/ui/TiltCard";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef } from "react";
-
+import LightRays from "../ui/lightRays";
 interface HeroSectionProps {
   email: string;
 }
 
 export const HeroSection = ({ email }: HeroSectionProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Enhanced pixel particles with better visibility
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      color: string;
-      alpha: number;
-      life: number;
-    }> = [];
-
-    // Theme-aware colors - will be updated when theme changes
-    const getThemeColors = () => {
-      const isDark = document.documentElement.classList.contains("dark");
-      if (isDark) {
-        // Catppuccin Mocha colors (Peach only)
-        return [
-          "#fab387", // Peach
-          "#cba6f7", // Mauve
-          "#bac2de", // Subtext1
-        ];
-      } else {
-        // Catppuccin Latte colors (Peach only)
-        return [
-          "#fe640b", // Peach
-          "#8839ef", // Mauve
-          "#5c5f77", // Subtext1
-        ];
-      }
-    };
-
-    const colors = getThemeColors();
-
-    // Create more visible particles
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        size: Math.random() * 4 + 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.8 + 0.4,
-        life: 1,
-      });
-    }
-
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw theme-aware background gradient
-      const isDark = document.documentElement.classList.contains("dark");
-      const primaryColor = isDark ? "#cba6f7" : "#8839ef"; // Mauve for both themes
-
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.max(canvas.width, canvas.height) / 2
-      );
-      gradient.addColorStop(0, `${primaryColor}1a`); // 10% opacity
-      gradient.addColorStop(1, `${primaryColor}00`); // 0% opacity
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        particle.life -= 0.005;
-        particle.alpha = particle.life;
-
-        // Wrap around screen
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-
-        // Draw particle with glow effect
-        ctx.shadowColor = particle.color;
-        ctx.shadowBlur = 10;
-        ctx.fillStyle = particle.color;
-        ctx.globalAlpha = particle.alpha;
-        ctx.fillRect(particle.x, particle.y, particle.size, particle.size);
-
-        // Reset shadow
-        ctx.shadowBlur = 0;
-        ctx.globalAlpha = 1;
-      });
-
-      // Add occasional new particles with current theme colors
-      if (Math.random() < 0.1 && particles.length < 100) {
-        const currentColors = getThemeColors();
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 2,
-          vy: (Math.random() - 0.5) * 2,
-          size: Math.random() * 3 + 1,
-          color:
-            currentColors[Math.floor(Math.random() * currentColors.length)],
-          alpha: 1,
-          life: 1,
-        });
-      }
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
-
   return (
-    <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      {/* Animated Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <canvas
-          ref={canvasRef}
+    <section className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#8839ef"
+          raysSpeed={1.2}
+          lightSpread={1.4}
+          rayLength={1.8}
+          followMouse={true}
+          mouseInfluence={0.08}
+          noiseAmount={0.03}
+          distortion={0.015}
+          fadeDistance={2.0}
+          pulsating={true}
+          saturation={0.7}
           className="absolute inset-0 w-full h-full"
-          style={{ pointerEvents: "none" }}
         />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-background/10 via-background/30 to-background/80" />
       </div>
-
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
-        <div className="space-y-6">
-          <h1 className="hero-heading text-foreground">Yushi Cui</h1>
-          <h2 className="feature-title text-muted-foreground">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-6">
+          <h1 className="hero-heading text-foreground drop-shadow-sm">Yushi Cui</h1>
+          <h2 className="feature-title text-foreground/90 drop-shadow-sm">
             Full-Stack Developer | Building Reliable & User-Focused Applications
           </h2>
 
           {/* Location Badge */}
-          <div className="flex items-center gap-2 bg-accent/20 px-4 py-2 rounded-full w-fit">
-            <MapPin className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-muted-foreground">
+          <div className="flex items-center gap-2 bg-background/30 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-primary/20 shadow-sm">
+            <MapPin className="w-4 h-4 text-primary drop-shadow-sm" />
+            <span className="text-sm font-medium text-foreground/90 drop-shadow-sm">
               Auckland, NZ • Remote Available
             </span>
           </div>
 
-          <p className="ui-text text-muted-foreground">
+          <p className="ui-text text-foreground/85 drop-shadow-sm bg-background/20 backdrop-blur-sm rounded-lg p-4 border border-primary/10">
             I engineer clean, high-performance applications with a relentless
             focus on the end-user. I solve complex problems by crafting elegant,
             scalable, and well-documented code.
@@ -226,6 +98,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
             alt="Developer Profile"
             className="w-full h-full object-cover"
           />
+          </div>
         </div>
       </div>
     </section>
