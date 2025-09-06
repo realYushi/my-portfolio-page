@@ -3,8 +3,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ApproachSection } from "@/components/sections/ApproachSection";
 import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { Footer } from "@/components/layout/Footer";
+import { ContactFooter } from "@/components/sections/ContactFooter";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
@@ -17,8 +16,7 @@ const Index = () => {
       <ApproachSection />
       <CapabilitiesSection />
       <CaseStudiesSection />
-      <ContactSection email={email} />
-      <Footer />
+      <ContactFooter email={email} />
       <MadeWithDyad />
     </div>
   );
