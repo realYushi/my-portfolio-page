@@ -7,85 +7,85 @@
 
 @layer base {
   :root {
-    /* Catppuccin Latte (Light Mode) */
-    --background: 220 23% 95%; /* Base */
-    --foreground: 234 16% 35%; /* Text */
+    /* Catppuccin Latte (Light Mode) - Improved contrast */
+    --background: 220 23% 97%; /* Lighter base for better contrast */
+    --foreground: 234 16% 25%; /* Darker text for better readability */
 
-    --card: 220 23% 97%; /* Mantle */
-    --card-foreground: 234 16% 35%; /* Text */
+    --card: 220 23% 99%; /* Almost white cards */
+    --card-foreground: 234 16% 25%; /* Dark text */
 
-    --popover: 220 23% 95%; /* Base */
-    --popover-foreground: 234 16% 35%; /* Text */
+    --popover: 220 23% 97%; /* Lighter popover */
+    --popover-foreground: 234 16% 25%; /* Dark text */
 
-    --primary: 267 84% 81%; /* Mauve */
-    --primary-foreground: 220 23% 95%; /* Base */
+    --primary: 267 84% 65%; /* More saturated mauve for better contrast */
+    --primary-foreground: 220 23% 97%; /* Light text on primary */
 
-    --secondary: 183 70% 92%; /* Teal */
-    --secondary-foreground: 234 16% 35%; /* Text */
+    --secondary: 183 70% 25%; /* Darker teal for better contrast */
+    --secondary-foreground: 0 0% 98%; /* White text on secondary */
 
-    --muted: 220 23% 90%; /* Surface0 */
-    --muted-foreground: 234 16% 45%; /* Subtext1 */
+    --muted: 220 23% 92%; /* Lighter muted background */
+    --muted-foreground: 234 16% 35%; /* Better contrast muted text */
 
-    --accent: 350 65% 92%; /* Maroon */
-    --accent-foreground: 234 16% 35%; /* Text */
+    --accent: 350 65% 25%; /* Darker maroon for better contrast */
+    --accent-foreground: 0 0% 98%; /* White text on accent */
 
     --destructive: 347 87% 44%; /* Red */
-    --destructive-foreground: 220 23% 95%; /* Base */
+    --destructive-foreground: 0 0% 98%; /* White text on destructive */
 
-    --border: 220 23% 85%; /* Surface1 */
-    --input: 220 23% 85%; /* Surface1 */
-    --ring: 267 84% 81%; /* Mauve */
+    --border: 220 23% 88%; /* Slightly darker border */
+    --input: 220 23% 92%; /* Light input background */
+    --ring: 267 84% 65%; /* More visible ring */
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 23% 92%; /* Surface0 */
-    --sidebar-foreground: 234 16% 35%; /* Text */
-    --sidebar-primary: 267 84% 81%; /* Mauve */
-    --sidebar-primary-foreground: 220 23% 95%; /* Base */
-    --sidebar-accent: 220 23% 90%; /* Surface1 */
-    --sidebar-accent-foreground: 234 16% 35%; /* Text */
-    --sidebar-border: 220 23% 85%; /* Surface2 */
-    --sidebar-ring: 267 84% 81%; /* Mauve */
+    --sidebar-background: 220 23% 95%; /* Light sidebar */
+    --sidebar-foreground: 234 16% 25%; /* Dark sidebar text */
+    --sidebar-primary: 267 84% 65%; /* Primary for sidebar */
+    --sidebar-primary-foreground: 220 23% 97%; /* Light text on sidebar primary */
+    --sidebar-accent: 220 23% 90%; /* Sidebar accent */
+    --sidebar-accent-foreground: 234 16% 25%; /* Dark text on sidebar accent */
+    --sidebar-border: 220 23% 88%; /* Sidebar border */
+    --sidebar-ring: 267 84% 65%; /* Sidebar ring */
   }
 
   .dark {
-    /* Catppuccin Mocha (Dark Mode) */
-    --background: 240 21% 15%; /* Base */
-    --foreground: 226 64% 88%; /* Text */
+    /* Catppuccin Mocha (Dark Mode) - Improved contrast */
+    --background: 240 21% 12%; /* Darker base */
+    --foreground: 226 64% 92%; /* Brighter text */
 
-    --card: 240 21% 12%; /* Mantle */
-    --card-foreground: 226 64% 88%; /* Text */
+    --card: 240 21% 10%; /* Darker cards */
+    --card-foreground: 226 64% 92%; /* Bright text */
 
-    --popover: 240 21% 15%; /* Base */
-    --popover-foreground: 226 64% 88%; /* Text */
+    --popover: 240 21% 12%; /* Dark popover */
+    --popover-foreground: 226 64% 92%; /* Bright text */
 
-    --primary: 267 84% 81%; /* Mauve */
-    --primary-foreground: 240 21% 15%; /* Base */
+    --primary: 267 84% 75%; /* Brighter mauve */
+    --primary-foreground: 240 21% 12%; /* Dark text on primary */
 
-    --secondary: 183 43% 24%; /* Teal */
-    --secondary-foreground: 226 64% 88%; /* Text */
+    --secondary: 183 43% 30%; /* Lighter teal */
+    --secondary-foreground: 226 64% 92%; /* Bright text on secondary */
 
-    --muted: 240 21% 20%; /* Surface0 */
-    --muted-foreground: 227 35% 80%; /* Subtext1 */
+    --muted: 240 21% 18%; /* Darker muted */
+    --muted-foreground: 227 35% 85%; /* Brighter muted text */
 
-    --accent: 350 65% 40%; /* Maroon */
-    --accent-foreground: 226 64% 88%; /* Text */
+    --accent: 350 65% 45%; /* Lighter maroon */
+    --accent-foreground: 226 64% 92%; /* Bright text on accent */
 
-    --destructive: 347 87% 44%; /* Red */
-    --destructive-foreground: 226 64% 88%; /* Text */
+    --destructive: 347 87% 55%; /* Brighter red */
+    --destructive-foreground: 226 64% 92%; /* Bright text on destructive */
 
-    --border: 240 21% 25%; /* Surface1 */
-    --input: 240 21% 25%; /* Surface1 */
-    --ring: 267 84% 81%; /* Mauve */
+    --border: 240 21% 22%; /* Slightly lighter border */
+    --input: 240 21% 18%; /* Input background */
+    --ring: 267 84% 75%; /* More visible ring */
     
-    --sidebar-background: 240 21% 12%; /* Mantle */
-    --sidebar-foreground: 226 64% 88%; /* Text */
-    --sidebar-primary: 267 84% 81%; /* Mauve */
-    --sidebar-primary-foreground: 240 21% 15%; /* Base */
-    --sidebar-accent: 240 21% 20%; /* Surface0 */
-    --sidebar-accent-foreground: 226 64% 88%; /* Text */
-    --sidebar-border: 240 21% 25%; /* Surface1 */
-    --sidebar-ring: 267 84% 81%; /* Mauve */
+    --sidebar-background: 240 21% 10%; /* Dark sidebar */
+    --sidebar-foreground: 226 64% 92%; /* Bright sidebar text */
+    --sidebar-primary: 267 84% 75%; /* Primary for sidebar */
+    --sidebar-primary-foreground: 240 21% 12%; /* Dark text on sidebar primary */
+    --sidebar-accent: 240 21% 16%; /* Sidebar accent */
+    --sidebar-accent-foreground: 226 64% 92%; /* Bright text on sidebar accent */
+    --sidebar-border: 240 21% 20%; /* Sidebar border */
+    --sidebar-ring: 267 84% 75%; /* Sidebar ring */
   }
 }
 
@@ -104,8 +104,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 600;
+    font-weight: 700; /* Bolder headings for better readability */
     line-height: 1.2;
+    color: hsl(var(--foreground));
   }
 
   button, .btn {
@@ -119,6 +120,13 @@
 
   a, button {
     @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Improved text contrast */
+  p, .ui-text {
+    color: hsl(var(--foreground));
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   /* Mobile-first responsive typography */
@@ -143,17 +151,19 @@
   .hero-heading {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
+    font-weight: 800; /* Extra bold for hero */
     letter-spacing: -0.03em;
     line-height: 1.1;
+    color: hsl(var(--foreground));
   }
 
   .feature-title {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
+    font-weight: 700; /* Bold feature titles */
     letter-spacing: -0.01em;
     line-height: 1.3;
+    color: hsl(var(--foreground));
   }
 
   .ui-text {
@@ -161,6 +171,7 @@
     font-size: clamp(1rem, 2vw, 1.125rem);
     font-weight: 400;
     line-height: 1.6;
+    color: hsl(var(--foreground));
   }
 
   .button-text {
@@ -179,20 +190,29 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: hsl(var(--foreground));
   }
 
-  /* Card shadows */
+  /* Card shadows with better contrast */
   .card-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px hsl(var(--border)); /* Added border for better definition */
   }
 
   /* Focus styles for accessibility */
   .focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
+
+  /* Improved contrast for badges and tags */
+  .badge {
+    font-weight: 600;
+  }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with better contrast */
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
@@ -200,33 +220,45 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
+    width: 8px; /* Slightly wider for better visibility */
   }
 
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: hsl(var(--background));
+    background: hsl(var(--muted));
+    border-radius: 4px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background: hsl(var(--primary));
-    border-radius: 3px;
+    border-radius: 4px;
+    border: 2px solid hsl(var(--muted));
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(var(--primary) / 0.9);
   }
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --border: 220 23% 20%;
+    --border: 220 23% 15%;
     --muted-foreground: 234 16% 10%;
+    --foreground: 234 16% 10%;
   }
   
   .dark {
     --border: 240 21% 30%;
-    --muted-foreground: 227 35% 90%;
+    --muted-foreground: 227 35% 95%;
+    --foreground: 226 64% 98%;
+  }
+
+  .hero-heading {
+    font-weight: 900;
+  }
+
+  .feature-title {
+    font-weight: 800;
   }
 }
 
@@ -238,4 +270,25 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Additional readability improvements */
+.hero-heading,
+.feature-title,
+.ui-text {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure good contrast on all interactive elements */
+button:not(:disabled),
+a:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Improve focus visibility for keyboard navigation */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }
