@@ -8,7 +8,7 @@ interface TiltCardProps {
   maxRotation?: number;
 }
 
-export const TiltCard = ({ children, className = '', maxRotation = 10 }: TiltCardProps) => {
+export const TiltCard = ({ children, className = '', maxRotation = 20 }: TiltCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
