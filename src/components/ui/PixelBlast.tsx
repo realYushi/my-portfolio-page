@@ -56,12 +56,13 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
     let time = 0;
 
     const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      const parent = canvas.parentElement;
+      if (parent) {
+        const rect = parent.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      }
     };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
     const draw = () => {
       if (!ctx) return;
@@ -69,14 +70,20 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
       const width = canvas.width;
       const height = canvas.height;
 
-      // Clear canvas with transparency
-      ctx.clearRect(0, 0, width, height);
+      // Clear canvas
+      if (transparent) {
+        ctx.clearRect(0, 0, width, height);
+      } else {
+        ctx.fillStyle = 'transparent';
+        ctx.fillRect(0, 0, width, height);
+      }
 
       const baseSize = pixelSize;
       const scale = patternScale;
       const density = patternDensity;
       const jitter = pixelSizeJitter;
 
+      // Draw particles
       for (let y = 0; y < height; y += baseSize * scale) {
         for (let x = 0; x < width; x += baseSize * scale) {
           if (Math.random() > density) continue;
@@ -99,8 +106,8 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
           let liquidOffsetY = 0;
           if (liquid) {
             const liquidTime = time * liquidWobbleSpeed;
-            liquidOffsetX = Math.sin(x * liquidRadius + liquidTime) * liquidStrength * currentSize;
-            liquidOffsetY = Math.cos(y * liquidRadius + liquidTime) * liquidStrength * currentSize;
+            liquidOffsetX = Math.sin(x * 0.01 + liquidTime) * liquidStrength * currentSize * 50;
+            liquidOffsetY = Math.cos(y * 0.01 + liquidTime) * liquidStrength * currentSize * 50;
           }
 
           // Ripple effect
@@ -108,14 +115,14 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
           if (enableRipples) {
             const rippleTime = time * rippleSpeed;
             const rippleDist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-            const ripple = Math.sin(rippleDist * rippleThickness - rippleTime) * rippleIntensityScale;
+            const ripple = Math.sin(rippleDist * 0.01 * rippleThickness - rippleTime) * rippleIntensityScale;
             rippleSize = 1 + Math.max(0, ripple);
           }
 
           const finalSize = currentSize * rippleSize * fade;
 
           ctx.fillStyle = color;
-          ctx.globalAlpha = fade;
+          ctx.globalAlpha = fade * 0.8; // Slightly more visible
 
           const drawX = x + liquidOffsetX;
           const drawY = y + liquidOffsetY;
@@ -144,11 +151,18 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
       animationFrameId = requestAnimationFrame(draw);
     };
 
+    // Initial setup
+    resizeCanvas();
     draw();
+
+    const resizeObserver = new ResizeObserver(resizeCanvas);
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resizeCanvas);
+      resizeObserver.disconnect();
     };
   }, [
     variant,
@@ -174,7 +188,10 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 w-full h-full ${className}`}
-      style={{ zIndex: 0 }}
+      style={{ 
+        zIndex: 0,
+        pointerEvents: 'none' // Allow clicks to pass through
+      }}
     />
   );
 };
