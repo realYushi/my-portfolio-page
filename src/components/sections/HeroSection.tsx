@@ -3,35 +3,133 @@
 import { EmailButtons } from "@/components/EmailButtons";
 import { Github, Linkedin, Download } from "lucide-react";
 import { TiltCard } from "@/components/ui/TiltCard";
-import PixelBlast from "@/components/PixelBlast";
+import { useEffect, useRef } from "react";
 
 interface HeroSectionProps {
   email: string;
 }
 
 export const HeroSection = ({ email }: HeroSectionProps) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Enhanced pixel particles with better visibility
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      color: string;
+      alpha: number;
+      life: number;
+    }> = [];
+
+    const colors = [
+      '#6750a4',  // Primary purple
+      '#2090ee',  // Secondary blue
+      '#e8def8',  // Light purple
+      '#ffffff',  // White for highlights
+    ];
+
+    // Create more visible particles
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        size: Math.random() * 4 + 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.8 + 0.4,
+        life: 1,
+      });
+    }
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw background gradient
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, 0,
+        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2
+      );
+      gradient.addColorStop(0, 'rgba(103, 80, 164, 0.1)');
+      gradient.addColorStop(1, 'rgba(103, 80, 164, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle, index) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.life -= 0.005;
+        particle.alpha = particle.life;
+
+        // Wrap around screen
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Draw particle with glow effect
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = particle.color;
+        ctx.globalAlpha = particle.alpha;
+        ctx.fillRect(particle.x, particle.y, particle.size, particle.size);
+
+        // Reset shadow
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+      });
+
+      // Add occasional new particles
+      if (Math.random() < 0.1 && particles.length < 100) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          size: Math.random() * 3 + 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          life: 1,
+        });
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
   return (
     <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      {/* PixelBlast Background */}
+      {/* Animated Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <PixelBlast
-          variant="circle"
-          pixelSize={6}
-          color="#B19EEF"
-          patternScale={3}
-          patternDensity={1.2}
-          pixelSizeJitter={0.5}
-          enableRipples
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.6}
-          edgeFade={0.25}
-          transparent
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ pointerEvents: 'none' }}
         />
       </div>
       
