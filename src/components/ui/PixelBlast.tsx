@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 interface PixelBlastProps {
-  variant?: 'circle' | 'square' | 'diamond';
+  variant?: 'circle' | 'square' | 'triangle';
   pixelSize?: number;
   color?: string;
   patternScale?: number;
@@ -23,7 +23,7 @@ interface PixelBlastProps {
   className?: string;
 }
 
-export const PixelBlast: React.FC<PixelBlastProps> = ({
+export const PixelBlast = ({
   variant = 'circle',
   pixelSize = 6,
   color = '#B19EEF',
@@ -41,159 +41,82 @@ export const PixelBlast: React.FC<PixelBlastProps> = ({
   speed = 0.6,
   edgeFade = 0.25,
   transparent = true,
-  className = '',
-}) => {
+  className = ''
+}: PixelBlastProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (canvasRef.current?.parentElement) {
+        const { width, height } = canvasRef.current.parentElement.getBoundingClientRect();
+        setDimensions({ width, height });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || dimensions.width === 0 || dimensions.height === 0) return;
 
+    canvas.width = dimensions.width;
+    canvas.height = dimensions.height;
+    
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let time = 0;
-
-    const resizeCanvas = () => {
-      const parent = canvas.parentElement;
-      if (parent) {
-        const rect = parent.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-      }
-    };
-
-    const draw = () => {
-      if (!ctx) return;
-
-      const width = canvas.width;
-      const height = canvas.height;
-
-      // Clear canvas
-      if (transparent) {
-        ctx.clearRect(0, 0, width, height);
-      } else {
-        ctx.fillStyle = 'transparent';
-        ctx.fillRect(0, 0, width, height);
-      }
-
-      const baseSize = pixelSize;
-      const scale = patternScale;
-      const density = patternDensity;
-      const jitter = pixelSizeJitter;
-
-      // Draw particles
-      for (let y = 0; y < height; y += baseSize * scale) {
-        for (let x = 0; x < width; x += baseSize * scale) {
-          if (Math.random() > density) continue;
-
-          const sizeJitter = baseSize * (1 + (Math.random() - 0.5) * jitter);
-          const currentSize = sizeJitter * scale;
-
-          // Calculate distance from center for edge fade
-          const centerX = width / 2;
-          const centerY = height / 2;
-          const distX = Math.abs(x - centerX) / centerX;
-          const distY = Math.abs(y - centerY) / centerY;
-          const maxDist = Math.max(distX, distY);
-          const fade = Math.max(0, 1 - maxDist / edgeFade);
-
-          if (fade <= 0) continue;
-
-          // Liquid effect
-          let liquidOffsetX = 0;
-          let liquidOffsetY = 0;
-          if (liquid) {
-            const liquidTime = time * liquidWobbleSpeed;
-            liquidOffsetX = Math.sin(x * 0.01 + liquidTime) * liquidStrength * currentSize * 50;
-            liquidOffsetY = Math.cos(y * 0.01 + liquidTime) * liquidStrength * currentSize * 50;
-          }
-
-          // Ripple effect
-          let rippleSize = 1;
-          if (enableRipples) {
-            const rippleTime = time * rippleSpeed;
-            const rippleDist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-            const ripple = Math.sin(rippleDist * 0.01 * rippleThickness - rippleTime) * rippleIntensityScale;
-            rippleSize = 1 + Math.max(0, ripple);
-          }
-
-          const finalSize = currentSize * rippleSize * fade;
-
-          ctx.fillStyle = color;
-          ctx.globalAlpha = fade * 0.8; // Slightly more visible
-
-          const drawX = x + liquidOffsetX;
-          const drawY = y + liquidOffsetY;
-
-          switch (variant) {
-            case 'circle':
-              ctx.beginPath();
-              ctx.arc(drawX, drawY, finalSize / 2, 0, Math.PI * 2);
-              ctx.fill();
-              break;
-            case 'square':
-              ctx.fillRect(drawX - finalSize / 2, drawY - finalSize / 2, finalSize, finalSize);
-              break;
-            case 'diamond':
-              ctx.save();
-              ctx.translate(drawX, drawY);
-              ctx.rotate(Math.PI / 4);
-              ctx.fillRect(-finalSize / 2, -finalSize / 2, finalSize, finalSize);
-              ctx.restore();
-              break;
+    // Simple pixel pattern implementation
+    const drawPattern = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const baseSize = pixelSize * patternScale;
+      const spacing = baseSize * patternDensity;
+      
+      for (let x = 0; x < canvas.width; x += spacing) {
+        for (let y = 0; y < canvas.height; y += spacing) {
+          const size = baseSize * (1 + (Math.random() - 0.5) * pixelSizeJitter);
+          const alpha = transparent ? 0.3 : 0.6;
+          
+          ctx.fillStyle = color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+          
+          if (variant === 'circle') {
+            ctx.beginPath();
+            ctx.arc(x + spacing/2, y + spacing/2, size/2, 0, 2 * Math.PI);
+            ctx.fill();
+          } else {
+            ctx.fillRect(x + spacing/2 - size/2, y + spacing/2 - size/2, size, size);
           }
         }
       }
-
-      time += speed / 60;
-      animationFrameId = requestAnimationFrame(draw);
     };
 
-    // Initial setup
-    resizeCanvas();
-    draw();
-
-    const resizeObserver = new ResizeObserver(resizeCanvas);
-    if (canvas.parentElement) {
-      resizeObserver.observe(canvas.parentElement);
-    }
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      resizeObserver.disconnect();
+    drawPattern();
+    
+    // Simple animation loop
+    let animationId: number;
+    const animate = () => {
+      drawPattern();
+      animationId = requestAnimationFrame(animate);
     };
-  }, [
-    variant,
-    pixelSize,
-    color,
-    patternScale,
-    patternDensity,
-    pixelSizeJitter,
-    enableRipples,
-    rippleSpeed,
-    rippleThickness,
-    rippleIntensityScale,
-    liquid,
-    liquidStrength,
-    liquidRadius,
-    liquidWobbleSpeed,
-    speed,
-    edgeFade,
-    transparent,
-  ]);
+    
+    animate();
+    
+    return () => cancelAnimationFrame(animationId);
+  }, [dimensions, variant, pixelSize, color, patternScale, patternDensity, pixelSizeJitter, transparent]);
 
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 w-full h-full ${className}`}
+      className={`absolute inset-0 ${className}`}
       style={{ 
-        zIndex: 0,
-        pointerEvents: 'none' // Allow clicks to pass through
+        opacity: transparent ? 0.3 : 0.6,
+        mixBlendMode: 'overlay'
       }}
     />
   );
 };
-
-export default PixelBlast;
