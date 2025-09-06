@@ -167,7 +167,7 @@ const Index = () => {
             {/* Feature 2 */}
             <Card className="card-shadow hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out group hover:bg-gradient-to-br hover:from-card hover:to-card/90">
               <CardHeader>
-                <CardTitle className="feature-title">Modern DevOps & AI Integration</CardTitle>
+                <CardTitle className="feature-title">DevOps & AI Integration</CardTitle>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <Badge variant="secondary">Docker</Badge>
                   <Badge variant="secondary">GitHub Actions</Badge>
