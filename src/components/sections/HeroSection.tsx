@@ -1,7 +1,10 @@
+import { lazy, Suspense } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
 import { GithubIcon, LinkedinIcon, Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import LightRays from "../ui/lightRays";
+
+// Lazy load the heavy LightRays component
+const LightRays = lazy(() => import("../ui/lightRays"));
 
 interface HeroSectionProps {
   email: string;
@@ -11,21 +14,23 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#8839ef"
-          raysSpeed={1.2}
-          lightSpread={1.4}
-          rayLength={1.8}
-          followMouse={true}
-          mouseInfluence={0.08}
-          noiseAmount={0.03}
-          distortion={0.015}
-          fadeDistance={2.0}
-          pulsating={true}
-          saturation={0.7}
-          className="absolute inset-0 w-full h-full"
-        />
+        <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-b from-primary/5 via-primary/10 to-background/50" />}>
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#8839ef"
+            raysSpeed={1.2}
+            lightSpread={1.4}
+            rayLength={1.8}
+            followMouse={true}
+            mouseInfluence={0.08}
+            noiseAmount={0.03}
+            distortion={0.015}
+            fadeDistance={2.0}
+            pulsating={true}
+            saturation={0.7}
+            className="absolute inset-0 w-full h-full"
+          />
+        </Suspense>
         <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-background/10 via-background/30 to-background/80" />
       </div>
       <div className="relative section-container py-12 sm:py-20 lg:py-32 z-10">
@@ -46,9 +51,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
             </div>
 
             <p className="ui-text text-lg text-foreground/90 drop-shadow-sm bg-background/30 backdrop-blur-md rounded-xl p-6 border border-primary/20 shadow-lg leading-relaxed">
-              I engineer clean, high-performance applications with a relentless
-              focus on the end-user. I solve complex problems by crafting elegant,
-              scalable, and well-documented code.
+              I engineer clean, high-performance applications with a relentless focus on the end-user. I solve complex problems by crafting elegant, scalable, and well-documented code.
             </p>
 
             <div className="space-y-6">
@@ -97,8 +100,11 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
             <img
               src="/me.png"
-              alt="Developer Profile"
+              alt="Yushi Cui - Full-Stack Developer"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/10 pointer-events-none" />
             <div className="absolute inset-0 ring-1 ring-inset ring-primary/20 rounded-3xl" />

@@ -363,4 +363,33 @@
     color: hsl(var(--foreground));
   }
 
+  /* Performance optimizations */
+  * {
+    will-change: auto;
+  }
+
+  /* Critical rendering optimizations */
+  .hero-heading,
+  .feature-title,
+  .section-title {
+    contain: layout style;
+  }
+
+  /* Reduce paint operations */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Optimize animations for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
 }

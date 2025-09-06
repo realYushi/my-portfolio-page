@@ -8,7 +8,8 @@ export const CapabilitiesSection = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">Core Capabilities</h2>
           <p className="section-description">
-            A comprehensive skill set that enables me to deliver end-to-end solutions with modern technologies and industry best practices.
+            A comprehensive skill set that enables me to deliver end-to-end
+            solutions with modern technologies and industry best practices.
           </p>
         </div>
 
@@ -20,19 +21,46 @@ export const CapabilitiesSection = () => {
                 Full-Stack Proficiency
               </CardTitle>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">React</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Vue.js</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">.NET</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">SQL</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Python</Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  React
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Vue.js
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  .NET
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  SQL
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Python
+                </Badge>
               </div>
             </CardHeader>
             <CardContent>
               <p className="ui-text text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">End-to-End Project Ownership:</strong> I have the
-                versatility to build and manage complete features from the
-                database to the UI, creating cohesive solutions and simplifying
-                the development workflow.
+                <strong className="text-foreground">
+                  End-to-End Project Ownership:
+                </strong>{" "}
+                I have the versatility to build and manage complete features
+                from the database to the UI, creating cohesive solutions and
+                simplifying the development workflow.
               </p>
             </CardContent>
           </Card>
@@ -44,15 +72,32 @@ export const CapabilitiesSection = () => {
                 DevOps & AI Integration
               </CardTitle>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Docker</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">GitHub Actions</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">AI Agent Architecture</Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Docker
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  GitHub Actions
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  AI Agent
+                </Badge>
               </div>
             </CardHeader>
             <CardContent>
               <p className="ui-text text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Efficient & Forward-Thinking Development:</strong> I
-                leverage modern practices like containerization for scalable
+                <strong className="text-foreground">
+                  Efficient & Forward-Thinking Development:
+                </strong>{" "}
+                I leverage modern practices like containerization for scalable
                 deployments and explore AI to build smarter, more competitive
                 products.
               </p>
@@ -66,18 +111,40 @@ export const CapabilitiesSection = () => {
                 Professional & Agile Mindset
               </CardTitle>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Agile</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Scrum</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">TDD</Badge>
-                <Badge variant="secondary" className="text-xs font-medium px-3 py-1">Git</Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Agile
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Scrum
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  TDD
+                </Badge>
+                <Badge
+                  variant="secondary"
+                  className="text-xs font-medium px-3 py-1"
+                >
+                  Git
+                </Badge>
               </div>
             </CardHeader>
             <CardContent>
               <p className="ui-text text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Seamless Team Integration:</strong> With professional
-                experience and a strong grasp of agile methodologies, I am
-                equipped to join your team and begin delivering high-quality,
-                reliable code from day one.
+                <strong className="text-foreground">
+                  Seamless Team Integration:
+                </strong>{" "}
+                With professional experience and a strong grasp of agile
+                methodologies, I am equipped to join your team and begin
+                delivering high-quality, reliable code from day one.
               </p>
             </CardContent>
           </Card>

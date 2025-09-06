@@ -14,4 +14,27 @@ export default defineConfig(() => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Enable compression and optimization
+    minify: 'terser' as const,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor chunks for better caching
+          'react-vendor': ['react', 'react-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
+          'router-vendor': ['react-router-dom'],
+          'icons-vendor': ['lucide-react'],
+        },
+      },
+    },
+    // Enable compression
+    assetsInlineLimit: 4096,
+  },
 }));
