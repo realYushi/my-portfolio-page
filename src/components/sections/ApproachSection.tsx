@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { ANIMATION_CONFIG } from "@/constants";
 
 export const ApproachSection = () => {
   const { containerRef, getItemClass } = useScrollAnimation(3, {
-    staggerDelay: 200,
-    threshold: 0.2,
+    staggerDelay: ANIMATION_CONFIG.STAGGER_DELAY,
+    threshold: ANIMATION_CONFIG.SCROLL_THRESHOLD,
   });
 
   return (

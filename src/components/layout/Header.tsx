@@ -4,17 +4,14 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
+import { SOCIAL_LINKS, NAVIGATION_SECTIONS } from "@/constants";
+import { scrollToSection, openExternalUrl } from "@/utils/navigation";
 
-interface HeaderProps {
-  email: string;
-}
-
-export const Header = ({ email }: HeaderProps) => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+  const handleScrollToSection = (sectionId: string) => {
+    scrollToSection(sectionId);
     setIsMenuOpen(false); // Close mobile menu after navigation
   };
 
@@ -50,11 +47,11 @@ export const Header = ({ email }: HeaderProps) => {
           <nav className="flex items-center justify-between">
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('approach')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Approach</button>
-              <button onClick={() => scrollToSection('capabilities')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Capabilities</button>
-              <button onClick={() => scrollToSection('case-studies')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Case Studies</button>
-              <a href="https://blog.yushi91.com" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Blog</a>
-              <button onClick={() => scrollToSection('contact')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Contact</button>
+              <button onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.APPROACH)} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Approach</button>
+              <button onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CAPABILITIES)} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Capabilities</button>
+              <button onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CASE_STUDIES)} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Case Studies</button>
+              <button onClick={() => openExternalUrl(SOCIAL_LINKS.BLOG)} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Blog</button>
+              <button onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CONTACT)} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Contact</button>
             </div>
 
             {/* Mobile Layout */}
@@ -99,38 +96,35 @@ export const Header = ({ email }: HeaderProps) => {
             <nav className="section-container py-6" role="navigation" aria-label="Mobile navigation">
               <div className="space-y-2">
                 <button 
-                  onClick={() => scrollToSection('approach')} 
+                  onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.APPROACH)} 
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="text-lg font-medium">Approach</span>
                   <span className="block text-sm text-muted-foreground mt-1">My development philosophy</span>
                 </button>
                 <button 
-                  onClick={() => scrollToSection('capabilities')} 
+                  onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CAPABILITIES)} 
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="text-lg font-medium">Capabilities</span>
                   <span className="block text-sm text-muted-foreground mt-1">Technical skills & expertise</span>
                 </button>
                 <button 
-                  onClick={() => scrollToSection('case-studies')} 
+                  onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CASE_STUDIES)} 
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="text-lg font-medium">Case Studies</span>
                   <span className="block text-sm text-muted-foreground mt-1">Real-world projects</span>
                 </button>
-                <a 
-                  href="https://blog.yushi91.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMenuOpen(false)}
+                <button 
+                  onClick={() => { openExternalUrl(SOCIAL_LINKS.BLOG); setIsMenuOpen(false); }}
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="text-lg font-medium">Blog</span>
                   <span className="block text-sm text-muted-foreground mt-1">Thoughts & insights</span>
-                </a>
+                </button>
                 <button 
-                  onClick={() => scrollToSection('contact')} 
+                  onClick={() => handleScrollToSection(NAVIGATION_SECTIONS.CONTACT)} 
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="text-lg font-medium">Contact</span>

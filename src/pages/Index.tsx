@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { CONTACT } from "@/constants";
 
 // Lazy load below-the-fold components
 const ApproachSection = lazy(() => import("@/components/sections/ApproachSection").then(module => ({ default: module.ApproachSection })));
@@ -9,12 +10,10 @@ const CaseStudiesSection = lazy(() => import("@/components/sections/CaseStudiesS
 const ContactFooter = lazy(() => import("@/components/sections/ContactFooter").then(module => ({ default: module.ContactFooter })));
 
 const Index = () => {
-  const email = "realyushi@gmail.com";
-
   return (
     <div className="min-h-screen bg-background">
-      <Header email={email} />
-      <HeroSection email={email} />
+      <Header />
+      <HeroSection email={CONTACT.EMAIL} />
       
       <Suspense fallback={<div className="h-96 bg-muted/20 animate-pulse" />}>
         <ApproachSection />
@@ -29,7 +28,7 @@ const Index = () => {
       </Suspense>
       
       <Suspense fallback={<div className="h-48 bg-background animate-pulse" />}>
-        <ContactFooter email={email} />
+        <ContactFooter email={CONTACT.EMAIL} />
       </Suspense>
     </div>
   );

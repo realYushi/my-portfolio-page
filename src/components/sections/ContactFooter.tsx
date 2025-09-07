@@ -1,9 +1,8 @@
 "use client";
 
 import { EmailButtons } from "@/components/EmailButtons";
-import { LinkedinIcon, GithubIcon } from "lucide-react";
 import { AboutModal } from "@/components/AboutModal";
-import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 interface ContactFooterProps {
   email: string;
@@ -27,32 +26,7 @@ export const ContactFooter = ({ email }: ContactFooterProps) => {
         </div>
 
         {/* Social Links - Enhanced design */}
-        <div className="flex justify-center gap-12 mb-20">
-          <div className="flex flex-col items-center group">
-            <Button 
-              variant="outline" 
-              size="icon"
-              className="w-16 h-16 mb-4 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out shadow-sm hover:shadow-lg"
-              onClick={() => window.open("https://www.linkedin.com/in/yushi-c-6043aa285/", "_blank")}
-              aria-label="LinkedIn profile"
-            >
-              <LinkedinIcon className="w-7 h-7 transition-colors duration-300 group-hover:text-primary" />
-            </Button>
-            <span className="ui-text font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">LinkedIn</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <Button 
-              variant="outline" 
-              size="icon"
-              className="w-16 h-16 mb-4 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out shadow-sm hover:shadow-lg"
-              onClick={() => window.open("https://github.com/realYushi", "_blank")}
-              aria-label="GitHub profile"
-            >
-              <GithubIcon className="w-7 h-7 transition-colors duration-300 group-hover:text-primary" />
-            </Button>
-            <span className="ui-text font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">GitHub</span>
-          </div>
-        </div>
+        <SocialLinks variant="footer" className="mb-20" />
 
         {/* Footer - Enhanced separation and styling */}
         <div className="text-center pt-12 border-t border-border/50">

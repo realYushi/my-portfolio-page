@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Plus, Copy, Check } from "lucide-react";
 import { showSuccess } from "@/utils/toast";
+import { openEmailClient } from "@/utils/navigation";
 
 interface EmailButtonsProps {
   email: string;
@@ -26,7 +27,7 @@ export const EmailButtons = ({ email, className = "" }: EmailButtonsProps) => {
       <Button 
         size="lg" 
         className="bg-primary hover:bg-primary/90 text-primary-foreground"
-        onClick={() => window.location.href = `mailto:${email}`}
+        onClick={() => openEmailClient(email)}
         aria-label="Hire me via email"
       >
         <Plus className="w-5 h-5 mr-2" />

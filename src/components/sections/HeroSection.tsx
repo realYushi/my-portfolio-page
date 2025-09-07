@@ -1,7 +1,10 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
-import { Github, Linkedin, Download, MapPin, BookOpen } from "lucide-react";
+import { Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/ui/SocialLinks";
+import { ASSETS, ANIMATION_CONFIG } from "@/constants";
+import { openExternalUrl } from "@/utils/navigation";
 
 // Lazy load the heavy LightRays component
 const LightRays = lazy(() => import("../ui/lightRays"));
@@ -30,25 +33,25 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
     // Trigger heading animation immediately
     setShowHeading(true);
     
-    // Trigger subheading animation after 200ms
+    // Trigger subheading animation after configured delay
     const subheadingTimer = setTimeout(() => {
       setShowSubheading(true);
-    }, 200);
+    }, ANIMATION_CONFIG.HERO_ANIMATION_DELAYS.SUBHEADING);
 
-    // Trigger location animation after 350ms
+    // Trigger location animation after configured delay
     const locationTimer = setTimeout(() => {
       setShowLocation(true);
-    }, 350);
+    }, ANIMATION_CONFIG.HERO_ANIMATION_DELAYS.LOCATION);
 
-    // Trigger description animation after 450ms
+    // Trigger description animation after configured delay
     const descriptionTimer = setTimeout(() => {
       setShowDescription(true);
-    }, 450);
+    }, ANIMATION_CONFIG.HERO_ANIMATION_DELAYS.DESCRIPTION);
 
-    // Trigger CTA animation after 500ms (200ms + 300ms)
+    // Trigger CTA animation after configured delay
     const ctaTimer = setTimeout(() => {
       setShowCTA(true);
-    }, 500);
+    }, ANIMATION_CONFIG.HERO_ANIMATION_DELAYS.CTA);
 
     return () => {
       window.removeEventListener('resize', checkMobile);
@@ -122,49 +125,16 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
               <EmailButtons email={email} />
 
               <div className="flex flex-wrap gap-4 pt-2">
+                <SocialLinks variant="hero" />
                 <Button
                   variant="outline"
                   size="icon"
                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                  onClick={() =>
-                    window.open("https://github.com/realYushi", "_blank")
-                  }
-                  aria-label="GitHub profile"
+                  onClick={() => openExternalUrl(ASSETS.RESUME)}
+                  aria-label="Download resume"
                 >
-                   <Github className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
+                  <Download className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
                 </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                  onClick={() =>
-                    window.open(
-                      "https://www.linkedin.com/in/yushi-c-6043aa285/",
-                      "_blank"
-                    )
-                  }
-                  aria-label="LinkedIn profile"
-                >
-                   <Linkedin className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
-                </Button>
-                 <Button
-                   variant="outline"
-                   size="icon"
-                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                   onClick={() => window.open("https://blog.yushi91.com", "_blank")}
-                   aria-label="Visit blog"
-                 >
-                   <BookOpen className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
-                 </Button>
-                 <Button
-                   variant="outline"
-                   size="icon"
-                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                   onClick={() => window.open(`${import.meta.env.BASE_URL}resume.pdf`, "_blank")}
-                   aria-label="Download resume"
-                 >
-                   <Download className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
-                 </Button>
               </div>
             </div>
           </div>
@@ -172,7 +142,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
           <div className="relative bg-gradient-to-br from-background/30 via-background/50 to-background/70 backdrop-blur-md rounded-3xl h-72 sm:h-96 lg:h-[32rem] w-full overflow-hidden shadow-2xl border border-primary/30 group">
             <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
             <img
-              src={`${import.meta.env.BASE_URL}me.png`}
+              src={ASSETS.PROFILE_IMAGE}
               alt="Yushi Cui - Full-Stack Developer"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
               loading="eager"
