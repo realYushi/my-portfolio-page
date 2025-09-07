@@ -16,8 +16,17 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
   const [showLocation, setShowLocation] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [showCTA, setShowCTA] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     // Trigger heading animation immediately
     setShowHeading(true);
     
@@ -42,6 +51,7 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
     }, 500);
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       clearTimeout(subheadingTimer);
       clearTimeout(locationTimer);
       clearTimeout(descriptionTimer);
@@ -50,26 +60,30 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="hero-section relative w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
         <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-b from-primary/5 via-primary/10 to-background/50" />}>
           <LightRays
             raysOrigin="top-center"
             raysColor="#8839ef"
             raysSpeed={1.2}
-            lightSpread={1.4}
-            rayLength={1.8}
-            followMouse={true}
-            mouseInfluence={0.08}
-            noiseAmount={0.03}
-            distortion={0.015}
-            fadeDistance={2.0}
+            lightSpread={isMobile ? 1.0 : 1.2}
+            rayLength={isMobile ? 3.5 : 2.5}
+            followMouse={!isMobile}
+            mouseInfluence={isMobile ? 0 : 0.08}
+            noiseAmount={0.02}
+            distortion={isMobile ? 0.02 : 0.015}
+            fadeDistance={isMobile ? 4.0 : 3.0}
             pulsating={true}
-            saturation={0.7}
+            saturation={isMobile ? 0.9 : 0.8}
             className="absolute inset-0 w-full h-full"
           />
         </Suspense>
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-background/10 via-background/30 to-background/80" />
+        <div className={`absolute inset-0 w-full h-full ${
+          isMobile 
+            ? 'bg-gradient-to-b from-background/5 via-background/15 to-background/50' 
+            : 'bg-gradient-to-b from-background/10 via-background/30 to-background/80'
+        }`} />
       </div>
       <div className="relative section-container py-12 sm:py-20 lg:py-32 z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

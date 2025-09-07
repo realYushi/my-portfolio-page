@@ -257,6 +257,11 @@
       @apply hover:translate-y-0 hover:shadow-lg;
     }
 
+    /* Enhanced light rays on mobile - ensure good visibility */
+    .hero-section {
+      min-height: 100vh;
+    }
+
     /* Disable hover effects on mobile for better performance */
     .hover\:scale-105:hover {
       transform: none;
