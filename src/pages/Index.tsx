@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/sections/HeroSection";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import { SectionSkeleton, ContactSkeleton } from "@/components/ui/LoadingStates";
 import { CONTACT } from "@/constants";
 
 // Lazy load below-the-fold components
@@ -12,24 +14,37 @@ const ContactFooter = lazy(() => import("@/components/sections/ContactFooter").t
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <HeroSection email={CONTACT.EMAIL} />
+      <ErrorBoundary>
+        <Header />
+      </ErrorBoundary>
       
-      <Suspense fallback={<div className="h-96 bg-muted/20 animate-pulse" />}>
-        <ApproachSection />
-      </Suspense>
+      <ErrorBoundary>
+        <HeroSection email={CONTACT.EMAIL} />
+      </ErrorBoundary>
       
-      <Suspense fallback={<div className="h-96 bg-background animate-pulse" />}>
-        <CapabilitiesSection />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<SectionSkeleton cards={3} />}>
+          <ApproachSection />
+        </Suspense>
+      </ErrorBoundary>
       
-      <Suspense fallback={<div className="h-96 bg-muted/20 animate-pulse" />}>
-        <CaseStudiesSection />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<SectionSkeleton cards={3} />}>
+          <CapabilitiesSection />
+        </Suspense>
+      </ErrorBoundary>
       
-      <Suspense fallback={<div className="h-48 bg-background animate-pulse" />}>
-        <ContactFooter email={CONTACT.EMAIL} />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<SectionSkeleton cards={4} />}>
+          <CaseStudiesSection />
+        </Suspense>
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Suspense fallback={<ContactSkeleton />}>
+          <ContactFooter email={CONTACT.EMAIL} />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

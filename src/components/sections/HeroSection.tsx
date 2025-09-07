@@ -1,19 +1,20 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
 import { Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import { ASSETS, ANIMATION_CONFIG } from "@/constants";
 import { openExternalUrl } from "@/utils/navigation";
 
-// Lazy load the heavy LightRays component
-const LightRays = lazy(() => import("../ui/lightRays"));
+// Use optimized LightRays component
+import OptimizedLightRays from "../ui/OptimizedLightRays";
 
 interface HeroSectionProps {
   email: string;
 }
 
-export const HeroSection = ({ email }: HeroSectionProps) => {
+export const HeroSection = memo(({ email }: HeroSectionProps) => {
   const [showHeading, setShowHeading] = useState(false);
   const [showSubheading, setShowSubheading] = useState(false);
   const [showLocation, setShowLocation] = useState(false);
@@ -21,14 +22,13 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
   const [showCTA, setShowCTA] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const checkMobile = useCallback(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   useEffect(() => {
-    // Check if mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     
     // Trigger heading animation immediately
     setShowHeading(true);
@@ -60,28 +60,26 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       clearTimeout(descriptionTimer);
       clearTimeout(ctaTimer);
     };
-  }, []);
+  }, [checkMobile]);
 
   return (
     <section className="hero-section relative w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
-        <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-b from-primary/5 via-primary/10 to-background/50" />}>
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#8839ef"
-            raysSpeed={1.2}
-            lightSpread={isMobile ? 1.0 : 1.2}
-            rayLength={isMobile ? 3.5 : 2.5}
-            followMouse={!isMobile}
-            mouseInfluence={isMobile ? 0 : 0.08}
-            noiseAmount={0.02}
-            distortion={isMobile ? 0.02 : 0.015}
-            fadeDistance={isMobile ? 4.0 : 3.0}
-            pulsating={true}
-            saturation={isMobile ? 0.9 : 0.8}
-            className="absolute inset-0 w-full h-full"
-          />
-        </Suspense>
+        <OptimizedLightRays
+          raysOrigin="top-center"
+          raysColor="#8839ef"
+          raysSpeed={1.2}
+          lightSpread={isMobile ? 1.0 : 1.2}
+          rayLength={isMobile ? 3.5 : 2.5}
+          followMouse={!isMobile}
+          mouseInfluence={isMobile ? 0 : 0.08}
+          noiseAmount={0.02}
+          distortion={isMobile ? 0.02 : 0.015}
+          fadeDistance={isMobile ? 4.0 : 3.0}
+          pulsating={true}
+          saturation={isMobile ? 0.9 : 0.8}
+          className="absolute inset-0 w-full h-full"
+        />
         <div className={`absolute inset-0 w-full h-full ${
           isMobile 
             ? 'bg-gradient-to-b from-background/5 via-background/15 to-background/50' 
@@ -141,10 +139,10 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
 
           <div className="relative bg-gradient-to-br from-background/30 via-background/50 to-background/70 backdrop-blur-md rounded-3xl h-72 sm:h-96 lg:h-[32rem] w-full overflow-hidden shadow-2xl border border-primary/30 group">
             <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
-            <img
+            <OptimizedImage
               src={ASSETS.PROFILE_IMAGE}
               alt="Yushi Cui - Full-Stack Developer"
-              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              className="w-full h-full transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -156,4 +154,6 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = "HeroSection";
