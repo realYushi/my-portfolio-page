@@ -46,6 +46,16 @@ const OptimizedLightRaysComponent = memo<OptimizedLightRaysProps>(({
   saturation = 0.8,
   className = "absolute inset-0 w-full h-full"
 }) => {
+  // Skip LightRays on mobile or low-end devices for performance
+  const shouldLoadLightRays = typeof window !== 'undefined' && 
+    window.innerWidth >= 768 && 
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    navigator.hardwareConcurrency > 2;
+  // Don't load heavy LightRays component if conditions aren't met
+  if (!shouldLoadLightRays) {
+    return <LightRaysLoader />;
+  }
+
   return (
     <ErrorBoundary 
       fallback={LightweightErrorFallback}

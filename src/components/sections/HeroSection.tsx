@@ -3,7 +3,7 @@ import { EmailButtons } from "@/components/EmailButtons";
 import { Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
-import OptimizedImage from "@/components/ui/OptimizedImage";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { ASSETS, ANIMATION_CONFIG } from "@/constants";
 import { openExternalUrl } from "@/utils/navigation";
 
@@ -139,10 +139,11 @@ export const HeroSection = memo(({ email }: HeroSectionProps) => {
 
           <div className="relative bg-gradient-to-br from-background/30 via-background/50 to-background/70 backdrop-blur-md rounded-3xl h-72 sm:h-96 lg:h-[32rem] w-full overflow-hidden shadow-2xl border border-primary/30 group">
             <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
-            <OptimizedImage
+            <ResponsiveImage
               src={ASSETS.PROFILE_IMAGE}
               alt="Yushi Cui - Full-Stack Developer"
               className="w-full h-full transition-all duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               loading="eager"
               decoding="async"
               fetchPriority="high"

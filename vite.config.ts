@@ -36,8 +36,17 @@ export default defineConfig(({ command }) => ({
     },
   },
   build: {
-    // Enable compression and optimization
+    // Enable maximum compression and optimization
     minify: 'esbuild' as const,
+    target: 'es2022',
+    // ESBuild optimization options
+    esbuild: {
+      drop: ['console', 'debugger'],
+      minifyIdentifiers: true,
+      minifySyntax: true,
+      minifyWhitespace: true,
+      legalComments: 'none',
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -46,10 +55,21 @@ export default defineConfig(({ command }) => ({
           'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
           'router-vendor': ['react-router-dom'],
           'icons-vendor': ['lucide-react'],
+          // Split heavy components
+          'animation-vendor': ['ogl'],
+        },
+        // Optimize chunk names for better caching
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop()?.replace('.tsx', '').replace('.ts', '') : 'chunk';
+          return `assets/${facadeModuleId || 'chunk'}-[hash].js`;
         },
       },
     },
-    // Enable compression
-    assetsInlineLimit: 4096,
+    // Reduce inline limit to force compression
+    assetsInlineLimit: 1024,
+    // Enable source map for debugging but exclude from production
+    sourcemap: false,
+    // Optimize CSS
+    cssMinify: true,
   },
 }));

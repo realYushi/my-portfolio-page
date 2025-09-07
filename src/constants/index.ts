@@ -33,5 +33,5 @@ export const ANIMATION_CONFIG = {
 // Asset paths
 export const ASSETS = {
   RESUME: `${import.meta.env.BASE_URL}resume.pdf`,
-  PROFILE_IMAGE: `${import.meta.env.BASE_URL}me.png`,
+  PROFILE_IMAGE: `${import.meta.env.BASE_URL}me.jpeg`,
 } as const;

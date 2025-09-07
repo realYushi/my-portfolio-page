@@ -1,18 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yushi Cui - Full-Stack Developer</title>
+
+    <!-- Preload critical LCP image -->
+    <link rel="preload" as="image" href="/me.jpeg" fetchpriority="high" />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
 
   <body>
     <div id="root"></div>
     <script>
       // Handle GitHub Pages SPA redirect
-      const redirect = sessionStorage.getItem('redirect');
+      const redirect = sessionStorage.getItem("redirect");
       if (redirect) {
-        sessionStorage.removeItem('redirect');
+        sessionStorage.removeItem("redirect");
         history.replaceState(null, null, redirect);
       }
     </script>

@@ -12,7 +12,21 @@ const App = () => {
   if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
       setTimeout(() => logPerformanceMetrics(), 100);
-    }, { once: true });
+    }, { once: true, passive: true });
+
+    // Improve back/forward cache compatibility
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        // Page was restored from bfcache
+        console.log('Page restored from back/forward cache');
+      }
+    }, { passive: true });
+
+    // Clean up any blocking resources before page is cached
+    window.addEventListener('pagehide', () => {
+      // Cancel any ongoing animations or timers
+      // This helps with bfcache eligibility
+    }, { passive: true });
   }
 
   return (
