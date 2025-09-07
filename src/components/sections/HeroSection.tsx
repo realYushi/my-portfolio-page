@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { EmailButtons } from "@/components/EmailButtons";
-import { Github, Linkedin, Download, MapPin } from "lucide-react";
+import { Github, Linkedin, Download, MapPin, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Lazy load the heavy LightRays component
@@ -147,15 +147,24 @@ export const HeroSection = ({ email }: HeroSectionProps) => {
                 >
                    <Linkedin className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
                 </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
-                  onClick={() => window.open(`${import.meta.env.BASE_URL}resume.pdf`, "_blank")}
-                  aria-label="Download resume"
-                >
-                  <Download className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
-                </Button>
+                 <Button
+                   variant="outline"
+                   size="icon"
+                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
+                   onClick={() => window.open("https://blog.yushi91.com", "_blank")}
+                   aria-label="Visit blog"
+                 >
+                   <BookOpen className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
+                 </Button>
+                 <Button
+                   variant="outline"
+                   size="icon"
+                   className="w-12 h-12 bg-card/95 backdrop-blur-sm border-border/50 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-300 ease-out shadow-sm hover:shadow-md group"
+                   onClick={() => window.open(`${import.meta.env.BASE_URL}resume.pdf`, "_blank")}
+                   aria-label="Download resume"
+                 >
+                   <Download className="w-6 h-6 transition-colors duration-300 group-hover:text-primary" />
+                 </Button>
               </div>
             </div>
           </div>

@@ -53,6 +53,7 @@ export const Header = ({ email }: HeaderProps) => {
               <button onClick={() => scrollToSection('approach')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Approach</button>
               <button onClick={() => scrollToSection('capabilities')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Capabilities</button>
               <button onClick={() => scrollToSection('case-studies')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Case Studies</button>
+              <a href="https://blog.yushi91.com" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Blog</a>
               <button onClick={() => scrollToSection('contact')} className="nav-link hover:text-primary focus-ring px-3 py-2 rounded-lg transition-colors duration-200">Contact</button>
             </div>
 
@@ -118,6 +119,16 @@ export const Header = ({ email }: HeaderProps) => {
                   <span className="text-lg font-medium">Case Studies</span>
                   <span className="block text-sm text-muted-foreground mt-1">Real-world projects</span>
                 </button>
+                <a 
+                  href="https://blog.yushi91.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span className="text-lg font-medium">Blog</span>
+                  <span className="block text-sm text-muted-foreground mt-1">Thoughts & insights</span>
+                </a>
                 <button 
                   onClick={() => scrollToSection('contact')} 
                   className="block w-full text-left nav-link hover:text-primary focus-ring px-4 py-4 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98]"
