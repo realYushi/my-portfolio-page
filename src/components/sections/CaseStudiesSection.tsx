@@ -1,9 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export const CaseStudiesSection = () => {
+  const { containerRef, getItemClass } = useScrollAnimation(4, {
+    staggerDelay: 150,
+    threshold: 0.2,
+  });
+
   return (
-    <section id="case-studies" className="bg-muted/20 section-padding">
+    <section id="case-studies" className="bg-muted/20 section-padding" ref={containerRef}>
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="section-title">Solutions in Action</h2>
@@ -14,7 +20,7 @@ export const CaseStudiesSection = () => {
 
         <div className="section-grid-2">
           {/* Case Study 1 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(0)}`}>
             <CardHeader className="pb-6">
               <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 HALO Systems Internship
@@ -47,7 +53,7 @@ export const CaseStudiesSection = () => {
           </Card>
 
           {/* Case Study 2 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(1)}`}>
             <CardHeader className="pb-6">
               <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Personal Project
@@ -81,7 +87,7 @@ export const CaseStudiesSection = () => {
           </Card>
 
           {/* Case Study 3 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(2)}`}>
             <CardHeader className="pb-6">
               <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Hackathon Winner
@@ -113,7 +119,7 @@ export const CaseStudiesSection = () => {
           </Card>
 
           {/* Case Study 4 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(3)}`}>
             <CardHeader className="pb-6">
               <Badge variant="secondary" className="w-fit mb-3 text-xs font-medium px-3 py-1">
                 Full-Stack Project

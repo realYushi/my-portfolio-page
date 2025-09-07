@@ -1,9 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export const CapabilitiesSection = () => {
+  const { containerRef, getItemClass } = useScrollAnimation(3, {
+    staggerDelay: 200,
+    threshold: 0.2,
+  });
+
   return (
-    <section id="capabilities" className="section-padding">
+    <section id="capabilities" className="section-padding" ref={containerRef}>
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="section-title">Core Capabilities</h2>
@@ -15,7 +21,7 @@ export const CapabilitiesSection = () => {
 
         <div className="section-grid-3">
           {/* Feature 1 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(0)}`}>
             <CardHeader className="pb-6">
               <CardTitle className="feature-title text-lg mb-4">
                 Full-Stack Proficiency
@@ -66,7 +72,7 @@ export const CapabilitiesSection = () => {
           </Card>
 
           {/* Feature 2 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(1)}`}>
             <CardHeader className="pb-6">
               <CardTitle className="feature-title text-lg mb-4">
                 DevOps & AI Integration
@@ -105,7 +111,7 @@ export const CapabilitiesSection = () => {
           </Card>
 
           {/* Feature 3 */}
-          <Card className="card-enhanced group">
+          <Card className={`card-enhanced group ${getItemClass(2)}`}>
             <CardHeader className="pb-6">
               <CardTitle className="feature-title text-lg mb-4">
                 Professional & Agile Mindset

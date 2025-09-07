@@ -378,6 +378,16 @@
     animation: heroSlideUp 600ms ease-out forwards;
   }
 
+  /* Card scroll animation classes */
+  .card-animate-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .card-animate-visible {
+    animation: heroSlideUp 600ms ease-out forwards;
+  }
+
   /* Improved text selection */
   ::selection {
     background-color: hsl(var(--primary) / 0.2);

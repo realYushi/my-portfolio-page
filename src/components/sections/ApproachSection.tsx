@@ -1,8 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export const ApproachSection = () => {
+  const { containerRef, getItemClass } = useScrollAnimation(3, {
+    staggerDelay: 200,
+    threshold: 0.2,
+  });
+
   return (
-    <section id="approach" className="bg-muted/20 section-padding">
+    <section id="approach" className="bg-muted/20 section-padding" ref={containerRef}>
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="section-title">A Product-Focused Approach</h2>
@@ -15,7 +21,7 @@ export const ApproachSection = () => {
 
         <div className="section-grid-3">
           {/* Principle 1 */}
-          <Card className="text-center card-enhanced group">
+          <Card className={`text-center card-enhanced group ${getItemClass(0)}`}>
             <CardHeader className="pb-4">
               <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/20 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
                 <span className="text-2xl group-hover:scale-110 transition-transform duration-500 ease-out" aria-hidden="true">🏗️</span>
@@ -30,7 +36,7 @@ export const ApproachSection = () => {
           </Card>
 
           {/* Principle 2 */}
-          <Card className="text-center card-enhanced group">
+          <Card className={`text-center card-enhanced group ${getItemClass(1)}`}>
             <CardHeader className="pb-4">
               <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/20 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
                 <span className="text-2xl group-hover:scale-110 transition-transform duration-500 ease-out" aria-hidden="true">🎯</span>
@@ -45,7 +51,7 @@ export const ApproachSection = () => {
           </Card>
 
           {/* Principle 3 */}
-          <Card className="text-center card-enhanced group">
+          <Card className={`text-center card-enhanced group ${getItemClass(2)}`}>
             <CardHeader className="pb-4">
               <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/20 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out">
                 <span className="text-2xl group-hover:scale-110 transition-transform duration-500 ease-out" aria-hidden="true">⚡</span>
